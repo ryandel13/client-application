@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="MasterThesis.WindowComponents.ViewMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MasterThesis.WindowComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="150">
+    <StackPanel>
+        <local:MenuItem x:Name="HomeBtn" ItemTitle="Home" BackGroundImage="menu_home"></local:MenuItem>
+        <local:MenuItem x:Name="MusicBtn" ItemTitle="Music" BackGroundImage="menu_music"></local:MenuItem>
+        <local:MenuItem x:Name="NaviBtn" ItemTitle="Navi"  BackGroundImage="menu_gps" MouseDoubleClick="NaviBtn_MouseDoubleClick"></local:MenuItem>
+        <local:MenuItem x:Name="SensorBtn" ItemTitle="Sensor"  BackGroundImage="menu_sensor" MouseDoubleClick="SensorBtn_MouseDoubleClick"></local:MenuItem>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MasterThesis.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="remoteConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ryandel.selfhost.me</Value>
+    </Setting>
+    <Setting Name="vdsPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8801</Value>
+    </Setting>
+    <Setting Name="sdsPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8802</Value>
+    </Setting>
+    <Setting Name="cesPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8803</Value>
+    </Setting>
+    <Setting Name="poiPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8804</Value>
+    </Setting>
+    <Setting Name="vin" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">WP0ZZZ94427</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

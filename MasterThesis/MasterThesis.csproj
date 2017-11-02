@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9549D12E-E7DE-499A-BE0D-E67B7CBD8992}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MasterThesis</RootNamespace>
+    <AssemblyName>MasterThesis</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DynamicDataDisplay, Version=0.3.0.1, Culture=neutral, PublicKeyToken=5b7d744a7263923f, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicDataDisplay.0.3.0.1\lib\net45\DynamicDataDisplay.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Routing" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ExchangeObjects\BitmapHelper.cs" />
+    <Compile Include="ExchangeObjects\CheckBoxClass.cs" />
+    <Compile Include="ExchangeObjects\DataPoint.cs" />
+    <Compile Include="ExchangeObjects\DataResponse.cs" />
+    <Compile Include="ExchangeObjects\Date2AxisConverter.cs" />
+    <Compile Include="ExchangeObjects\LineSeries.cs" />
+    <Compile Include="ExchangeObjects\NotifierBase.cs" />
+    <Compile Include="ExchangeObjects\POI.cs" />
+    <Compile Include="ExchangeObjects\RemoteUrlBuilder.cs" />
+    <Compile Include="ExchangeObjects\ResponseEntity.cs" />
+    <Compile Include="RESTInterface\CommandMessage.cs" />
+    <Compile Include="RESTInterface\Message.cs" />
+    <Compile Include="RESTInterface\RESTImplementation.cs" />
+    <Compile Include="RESTInterface\RESTInterface.cs" />
+    <Compile Include="WindowComponents\BasicChart.xaml.cs">
+      <DependentUpon>BasicChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\FooterMenuItem.xaml.cs">
+      <DependentUpon>FooterMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\MainFooter.xaml.cs">
+      <DependentUpon>MainFooter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\MainHeader.xaml.cs">
+      <DependentUpon>MainHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\MenuItem.xaml.cs">
+      <DependentUpon>MenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\SignalIndicator.xaml.cs">
+      <DependentUpon>SignalIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\TemperatureIndicator.xaml.cs">
+      <DependentUpon>TemperatureIndicator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\ViewMenu.xaml.cs">
+      <DependentUpon>ViewMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\ViewPort.xaml.cs">
+      <DependentUpon>ViewPort.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Views\Navigation.xaml.cs">
+      <DependentUpon>Navigation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Views\PopUp.xaml.cs">
+      <DependentUpon>PopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Views\PopUpMessage.xaml.cs">
+      <DependentUpon>PopUpMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Views\TemperatureDiagram.xaml.cs">
+      <DependentUpon>TemperatureDiagram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\XAxisLabels.xaml.cs">
+      <DependentUpon>XAxisLabels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\YAxisLabels.xaml.cs">
+      <DependentUpon>YAxisLabels.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="WindowComponents\BasicChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\FooterMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\MainFooter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\MainHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\MenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\SignalIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\TemperatureIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\ViewMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\ViewPort.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Views\Navigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Views\PopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Views\PopUpMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Views\TemperatureDiagram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\XAxisLabels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\YAxisLabels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CPU-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-gps-tracking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\music-note-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zzzzhome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car_doors_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car_doors_opened.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navi_static.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navi_pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator_signal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator_signal_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator_signal_25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator_signal_50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator_signal_75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\indicator_signal_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volume-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\volume-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-play-pause-resume.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\media-previous.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tasks\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

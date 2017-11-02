@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="MasterThesis.WindowComponents.ViewPort"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MasterThesis.WindowComponents"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="830">
+    <Grid Height="430" Width="830" Background="#FF323F53" Name="port">
+            
+    </Grid>
+</UserControl>
