@@ -33,10 +33,23 @@ namespace MasterThesis.ExchangeObjects
         }
         public static Uri getUriFor(SERVICE service, String context, String ressource)
         {
+            return getUriFor(service, context, ressource, false);
+        }
+
+        public static Uri getUriFor(SERVICE service, String context, String ressource, Boolean local)
+        {
             int port = 0;
             getInstance().ports.TryGetValue(service, out port);
             String vin = global::MasterThesis.Properties.Settings.Default.vin;
-            Uri url = new Uri("http://" + global::MasterThesis.Properties.Settings.Default.remoteConnection + ":" + port + "/" + context + "/" + vin + "/" + ressource);
+            String remote;
+            if(local)
+            {
+                remote = "localhost";
+            } else
+            {
+                remote = global::MasterThesis.Properties.Settings.Default.remoteConnection;
+            }
+            Uri url = new Uri("http://" + remote + ":" + port + "/" + context + "/" + vin + "/" + ressource);
 
             return url;
         }
