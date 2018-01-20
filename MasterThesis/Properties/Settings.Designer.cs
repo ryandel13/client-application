@@ -61,7 +61,7 @@ namespace MasterThesis.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("8804")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8808")]
         public string poiPort {
             get {
                 return ((string)(this["poiPort"]));

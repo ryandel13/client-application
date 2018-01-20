@@ -30,7 +30,7 @@ namespace MasterThesis
 
             RESTInterface.RESTInterface restService = new RESTInterface.RESTImplementation();
             WebServiceHost __serviceHost = new WebServiceHost(restService, new Uri("http://localhost:8000/RESTInterface/"));
-            __serviceHost.Open();
+            //__serviceHost.Open();
 
             instance = this;
         }

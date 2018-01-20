@@ -15,7 +15,7 @@
       <Value Profile="(Default)">8803</Value>
     </Setting>
     <Setting Name="poiPort" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">8804</Value>
+      <Value Profile="(Default)">8808</Value>
     </Setting>
     <Setting Name="vin" Type="System.String" Scope="Application">
       <Value Profile="(Default)">WP0ZZZ94427</Value>

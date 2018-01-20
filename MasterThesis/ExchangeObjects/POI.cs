@@ -8,11 +8,12 @@ namespace MasterThesis.ExchangeObjects
 {
     class POI
     {
-        public String Title { get; set; }
-        public String Description { get; set; }
+        public String title { get; set; }
+        public String description { get; set; }
+        public String marker { get; set; }
 
-        public int XAxis { get; set; }
-        public int YAxis { get; set; }
+        public float longitude { get; set; }
+        public float latitude { get; set; }
 
     }
 }
