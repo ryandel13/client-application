@@ -93,6 +93,7 @@
     <Compile Include="ExchangeObjects\RemoteUrlBuilder.cs" />
     <Compile Include="ExchangeObjects\ResponseEntity.cs" />
     <Compile Include="RESTInterface\CommandMessage.cs" />
+    <Compile Include="RESTInterface\GpsResponse.cs" />
     <Compile Include="RESTInterface\Message.cs" />
     <Compile Include="RESTInterface\RESTImplementation.cs" />
     <Compile Include="RESTInterface\RESTInterface.cs" />

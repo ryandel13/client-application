@@ -1,4 +1,5 @@
 ﻿using MasterThesis.ExchangeObjects;
+using MasterThesis.RESTInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,9 @@ namespace MasterThesis.WindowComponents.Views
     /// Interaktionslogik für Navigation.xaml
     /// </summary>
     public partial class Navigation : UserControl
-    { 
-        public Navigation()
+    {
+        private static Navigation instance;
+        private Navigation()
         {
             InitializeComponent();
 
@@ -45,6 +47,25 @@ namespace MasterThesis.WindowComponents.Views
             AddPOI(poi1);
             AddPOI(poi2);
             AddPOI(poi3);
+        }
+
+        internal void addPoiByGps(GpsResponse resp)
+        {
+            POI newPOI = new POI();
+            newPOI.Title = resp.name;
+            newPOI.XAxis = (int)resp.latitude;
+            newPOI.YAxis = (int)resp.longitude;
+
+            AddPOI(newPOI);
+        }
+
+        public static Navigation getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new Navigation();
+            }
+            return instance;
         }
 
         private void AddPOI(POI poiInfo)

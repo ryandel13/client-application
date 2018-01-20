@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.Text;
 using System.Threading.Tasks;
+using MasterThesis.WindowComponents.Views;
 
 namespace MasterThesis.RESTInterface
 {
@@ -25,6 +26,12 @@ namespace MasterThesis.RESTInterface
             CommandMessage cmdMessage = new CommandMessage(message.message);
 
             Task task = new Task( () => MainWindow.getInstance().openPopUp(cmdMessage.GetCommand()));
+            task.Start();
+        }
+
+        public void pushGps(GpsResponse message)
+        {
+            Task task = new Task(() => Navigation.getInstance().addPoiByGps(message));
             task.Start();
         }
     }

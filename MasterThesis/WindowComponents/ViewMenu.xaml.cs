@@ -33,7 +33,7 @@ namespace MasterThesis.WindowComponents
 
         private void NaviBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).setViewPort(new Navigation());
+            ((MainWindow)Application.Current.MainWindow).setViewPort(Navigation.getInstance());
         }
     }
 }
