@@ -23,8 +23,18 @@ namespace MasterThesis.WindowComponents.Views
     /// Interaktionslogik für Navigation.xaml
     /// </summary>
     public partial class Navigation : UserControl
-    { 
-        public Navigation()
+    {
+        private static Navigation instance;
+
+        public static Navigation getInstance()
+        {
+            if(instance == null)
+            {
+                instance = new Navigation();
+            }
+            return instance;
+        }
+        private Navigation()
         {
             InitializeComponent();
 
@@ -49,9 +59,23 @@ namespace MasterThesis.WindowComponents.Views
             AddPOI(poi2);
             AddPOI(poi3);*/
 
-            retrievePOI();
+            //retrievePOI();
         }
+        internal void addPoiByGps(RESTInterface.GpsResponse resp)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                POI newPOI = new POI();
+                newPOI.title = resp.name;
+                newPOI.latitude = (int)resp.latitude;
+                newPOI.longitude = (int)resp.longitude;
+                newPOI.marker = resp.marker;
 
+                AddPOI(newPOI);
+            }));
+
+            
+        }
         private void AddPOI(POI poiInfo)
         {
             Image poi = new Image();
@@ -86,10 +110,11 @@ namespace MasterThesis.WindowComponents.Views
             {
                 System.Console.Out.WriteLine("Error occured during webrequest");
             }
-
-            foreach(POI p in dataResponse)
-            {
-                this.AddPOI(p);
+            if(dataResponse != null) {
+                foreach (POI p in dataResponse)
+                {
+                    this.AddPOI(p);
+                }
             }
         }
     }

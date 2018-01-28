@@ -60,8 +60,8 @@ C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowC
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\FooterMenuItem.baml
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\Navigation.g.cs
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\Navigation.baml
-C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\MasterThesis.csprojResolveAssemblyReference.cache
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\PopUpMessage.g.cs
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\PopUpMessage.baml
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\PopUp.g.cs
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\PopUp.baml
+C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\MasterThesis.csprojResolveAssemblyReference.cache
