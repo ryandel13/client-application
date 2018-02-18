@@ -1,4 +1,6 @@
-﻿using MasterThesis.WindowComponents.Views;
+﻿using eureka_sharpener;
+using eureka_sharpener.elements;
+using MasterThesis.WindowComponents.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,29 @@ namespace MasterThesis.WindowComponents
     /// </summary>
     public partial class ViewMenu : UserControl
     {
+
+        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
         public ViewMenu()
         {
             InitializeComponent();
+
+            dispatcherTimer.Tick += new EventHandler(UpdateServices);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 3);
+            dispatcherTimer.Start();
+        }
+
+        private void UpdateServices(object sender, EventArgs e)
+        {
+            Eureka eureka = new Eureka("localhost", 8761);
+            Registry registry = eureka.ReadRegistry();
+            Instance instance = registry.FindInstance("poi-service");
+            if(instance == null)
+            {
+                this.NaviBtn.Enabled(false);
+            } else
+            {
+                this.NaviBtn.Enabled(true);
+            }
         }
 
         private void SensorBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)

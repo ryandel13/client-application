@@ -1,4 +1,6 @@
-﻿using MasterThesis.WindowComponents.Views;
+﻿using eureka_sharpener;
+using eureka_sharpener.elements;
+using MasterThesis.WindowComponents.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,20 +26,40 @@ namespace MasterThesis
     {
         private static MainWindow instance;
 
+        private Eureka eureka;
+
+        private Instance eurekaInstance;
+
+        private UserControl activeControl = null;
         public MainWindow()
         {
             InitializeComponent();
 
             RESTInterface.RESTInterface restService = new RESTInterface.RESTImplementation();
-            WebServiceHost __serviceHost = new WebServiceHost(restService, new Uri("http://localhost:8000/RESTInterface/"));
+            WebServiceHost __serviceHost = new WebServiceHost(restService, new Uri("http://localhost:8000/ui/"));
             __serviceHost.Open();
+
+            eureka = new Eureka("localhost", 8761);
+            eurekaInstance = eureka.Register("ui-service-app", 8000);
+
+            Application.Current.Exit += new ExitEventHandler(this.OnApplicationExit);
 
             instance = this;
         }
 
+        private void Current_Exit(object sender, ExitEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         public void setViewPort(UserControl userControl)
         {
+            if (activeControl != null)
+            {
+                this.ViewPort.port.Children.Remove(activeControl);
+            }
             this.ViewPort.port.Children.Add(userControl);
+            activeControl = userControl;
         }
 
         public static MainWindow getInstance()
@@ -56,6 +78,11 @@ namespace MasterThesis
         {
             Brush brush = new SolidColorBrush(Colors.AliceBlue);
             this.Background = brush;
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            eureka.Unregister(this.eurekaInstance);
         }
     }
 }

@@ -309,5 +309,14 @@
   <ItemGroup>
     <Folder Include="Tasks\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navi_pin_remote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eureka-sharpener\eureka-sharpener.csproj">
+      <Project>{CD189682-E319-4389-8442-055E1CB577E5}</Project>
+      <Name>eureka-sharpener</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

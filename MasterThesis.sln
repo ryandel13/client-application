@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterThesis", "MasterThesis\MasterThesis.csproj", "{9549D12E-E7DE-499A-BE0D-E67B7CBD8992}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eureka-sharpener", "eureka-sharpener\eureka-sharpener.csproj", "{CD189682-E319-4389-8442-055E1CB577E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eureka_sharpener_test", "eureka_sharpener_test\eureka_sharpener_test.csproj", "{C4E1D6C6-AB67-4595-BC70-F427FB7FD804}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{9549D12E-E7DE-499A-BE0D-E67B7CBD8992}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9549D12E-E7DE-499A-BE0D-E67B7CBD8992}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9549D12E-E7DE-499A-BE0D-E67B7CBD8992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD189682-E319-4389-8442-055E1CB577E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD189682-E319-4389-8442-055E1CB577E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD189682-E319-4389-8442-055E1CB577E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD189682-E319-4389-8442-055E1CB577E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E1D6C6-AB67-4595-BC70-F427FB7FD804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E1D6C6-AB67-4595-BC70-F427FB7FD804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E1D6C6-AB67-4595-BC70-F427FB7FD804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E1D6C6-AB67-4595-BC70-F427FB7FD804}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

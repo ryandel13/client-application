@@ -59,7 +59,7 @@ namespace MasterThesis.WindowComponents.Views
             AddPOI(poi2);
             AddPOI(poi3);*/
 
-            //retrievePOI();
+            retrievePOI();
         }
         internal void addPoiByGps(RESTInterface.GpsResponse resp)
         {
@@ -79,7 +79,13 @@ namespace MasterThesis.WindowComponents.Views
         private void AddPOI(POI poiInfo)
         {
             Image poi = new Image();
-            poi.Source = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.navi_pin);
+            if (poiInfo.marker.Equals("remote"))
+            {
+                poi.Source = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.navi_pin_remote);
+            } else
+            {
+                poi.Source = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.navi_pin);
+            }
             poi.HorizontalAlignment = HorizontalAlignment.Left;
             poi.VerticalAlignment = VerticalAlignment.Top;
             poi.Height = 20;
@@ -95,7 +101,7 @@ namespace MasterThesis.WindowComponents.Views
             try
             {
                 String remoteUrl = global::MasterThesis.Properties.Settings.Default.remoteConnection;
-                WebRequest request = WebRequest.Create(RemoteUrlBuilder.getUriFor(RemoteUrlBuilder.SERVICE.POI, "poi", "", true).ToString());
+                WebRequest request = WebRequest.Create(RemoteUrlBuilder.getUriFor(RemoteUrlBuilder.SERVICE.POI, "poi", "?latitude=0&longitude=0&cached=true&callback=true", true).ToString());
                 WebResponse response = request.GetResponse();
 
                 Stream dataStream = response.GetResponseStream();

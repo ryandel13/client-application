@@ -223,6 +223,16 @@ namespace MasterThesis.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap navi_pin_remote {
+            get {
+                object obj = ResourceManager.GetObject("navi_pin_remote", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap navi_static {
             get {
                 object obj = ResourceManager.GetObject("navi_static", resourceCulture);

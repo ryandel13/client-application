@@ -55,5 +55,17 @@ namespace MasterThesis.WindowComponents
                 this.Title.Text = "";
             }
         }
+
+        public void Enabled(Boolean enabled)
+        {
+            this.IsEnabled = enabled;
+            if(enabled)
+            {
+                Grid.Background = new SolidColorBrush(System.Windows.Media.Colors.Aqua);
+            } else
+            {
+                Grid.Background = new SolidColorBrush(System.Windows.Media.Colors.Beige);
+            }
+        }
     }
 }

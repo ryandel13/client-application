@@ -1,0 +1,8 @@
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\obj\Debug\eureka-sharpener.csprojResolveAssemblyReference.cache
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\obj\Debug\eureka-sharpener.csproj.CoreCompileInputs.cache
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\bin\Debug\eureka-sharpener.dll
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\bin\Debug\eureka-sharpener.pdb
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\obj\Debug\eureka-sharpener.dll
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-sharpener\obj\Debug\eureka-sharpener.pdb

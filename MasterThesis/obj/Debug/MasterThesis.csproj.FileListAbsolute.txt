@@ -65,3 +65,5 @@ C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowC
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\PopUp.g.cs
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\WindowComponents\Views\PopUp.baml
 C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\obj\Debug\MasterThesis.csprojResolveAssemblyReference.cache
+C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\bin\Debug\eureka-sharpener.dll
+C:\Users\MalteChristjan\source\repos\MasterThesis\MasterThesis\bin\Debug\eureka-sharpener.pdb
