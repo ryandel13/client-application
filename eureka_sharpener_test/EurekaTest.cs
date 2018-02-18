@@ -12,7 +12,7 @@ namespace eureka_sharpener_test
         [TestMethod]
         public void TestGetRegistry()
         {
-            Eureka eureka = new Eureka("localhost", 8762);
+            Eureka eureka = new Eureka("localhost", 8761);
             Registry registry = eureka.ReadRegistry();
 
             Assert.IsNotNull(registry);
@@ -24,7 +24,7 @@ namespace eureka_sharpener_test
         public void TestRegistration()
         {
             String appName = "registertest";
-            Eureka eureka = new Eureka("localhost", 8762);
+            Eureka eureka = new Eureka("localhost", 8761);
             Assert.IsNotNull(eureka.Register(appName, 8888));
 
             Registry reg = eureka.ReadRegistry();
@@ -44,7 +44,7 @@ namespace eureka_sharpener_test
         public void TestUnregister()
         {
             String appName = "unregistertest";
-            Eureka eureka = new Eureka("localhost", 8762);
+            Eureka eureka = new Eureka("localhost", 8761);
             Instance instance = eureka.Register(appName, 8888);
             Registry reg = eureka.ReadRegistry();
             Boolean found = false;
@@ -66,7 +66,7 @@ namespace eureka_sharpener_test
         public void TestHeartbeat()
         {
             String appName = "heartbeattest";
-            Eureka eureka = new Eureka("localhost", 8762);
+            Eureka eureka = new Eureka("localhost", 8761);
             eureka.renewalIntervalInSecs = 5;
             eureka.durationInSecs = 5;
             Assert.IsNotNull(eureka.Register(appName, 8888));

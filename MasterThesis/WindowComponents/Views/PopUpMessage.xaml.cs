@@ -35,7 +35,7 @@ namespace MasterThesis.WindowComponents.Views
         {
             base.Show();
             dispatcherTimer.Tick += new EventHandler(CloseWindow);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
         }
 

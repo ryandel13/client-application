@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:MasterThesis.WindowComponents.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400">
-    <Grid Background="Beige" Height="300" Width="400">
-        <Label Content="Label" Name="content" HorizontalAlignment="Left" Margin="92,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.929,-0.483"/>
+    <Grid Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Height="300" Width="400">
+        <Label Content="Label" Name="content" Margin="110,239,110,0" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-2.929,-0.483"/>
+        <Image Name="picture" Height="150"  VerticalAlignment="Top" Width="150" Margin="0,51,0,0" />
 
     </Grid>
 </UserControl>

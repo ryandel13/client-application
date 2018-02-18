@@ -14,9 +14,9 @@ namespace eureka_sharpener
     public class Eureka
     {
 
-        private static String hostName;
+        private String eurekaHost;
 
-        public static int port { get; set; }
+        public int eurekaPort { get; set; }
 
         public int renewalIntervalInSecs { get; set; }
 
@@ -25,20 +25,23 @@ namespace eureka_sharpener
 
         public Eureka(String hostName, int port)
         {
-            Eureka.hostName = hostName;
-            Eureka.port = port;
+            this.eurekaHost = hostName;
+            this.eurekaPort = port;
         }
 
         public Instance Register(String appName, int hostport)
         {
             String hostname = System.Environment.MachineName;
-            Eureka.hostName = hostname;
+            return this.Register(appName, hostport, hostname);
+        }
 
+        public Instance Register(String appName, int hostport, String hostname)
+        {
             String uAppName = appName.ToUpper();
             String lAppName = appName.ToLower();
 
             Instance instance = new Instance();
-            instance.hostName = Eureka.hostName;
+            instance.hostName = hostname;
             instance.app = uAppName;
             instance.instanceId = hostname + ":" + lAppName + ":" + hostport;
             instance.ipAddr = System.Net.IPAddress.Any.ToString();
@@ -78,7 +81,7 @@ namespace eureka_sharpener
             wrapper.instance = instance;
 
             String json = JsonConvert.SerializeObject(wrapper);
-            ResponseObject resp = RestRequest(uAppName + "/", "POST", json);
+            ResponseObject resp = RestRequest(uAppName + "/", "POST", json, eurekaHost, eurekaPort);
             if (resp.StatusCode != 200) {
                 return null;
             }
@@ -86,6 +89,8 @@ namespace eureka_sharpener
             HeartbeatThread heartbeat = new HeartbeatThread();
             heartbeat.instance = instance;
             heartbeat.renewalInterval = renewalIntervalInSecs;
+            heartbeat.eurekaPort = this.eurekaPort;
+            heartbeat.eurekaHost = this.eurekaHost;
             Thread heartbeatThread = new Thread(new ThreadStart(heartbeat.HeartBeat));
             instance.HeartbeatThread = heartbeatThread;
             heartbeatThread.Start();
@@ -97,7 +102,7 @@ namespace eureka_sharpener
             Thread t = instance.HeartbeatThread;
             t.Abort();
 
-            ResponseObject response = RestRequest(instance.app + "/" + instance.instanceId, "DELETE", null);
+            ResponseObject response = RestRequest(instance.app + "/" + instance.instanceId, "DELETE", null, eurekaHost, eurekaPort);
             if (response.StatusCode == 200)
             {
                 return true;
@@ -107,7 +112,7 @@ namespace eureka_sharpener
 
         public Registry ReadRegistry()
         {
-            ResponseObject registry = RestRequest("", "GET", null);
+            ResponseObject registry = RestRequest("", "GET", null, eurekaHost, eurekaPort);
             if(registry.StatusCode == 200)
             {
                 Registry reg = JsonConvert.DeserializeObject<Registry>(registry.ResponsePayload);
@@ -116,13 +121,22 @@ namespace eureka_sharpener
             return null;
         }
 
+        public Boolean TakeOut(Instance instance)
+        {
+            ResponseObject response = RestRequest(instance.app + "/" + instance.instanceId + "/status?value=OUT_OF_SERVICE", "PUT", null, eurekaHost, eurekaPort);
+            if (response.StatusCode == 200)
+            {
+                return true;
+            }
+            return false;
+        }
      
 
-        private static ResponseObject RestRequest(String ressource, String method, String payload)
+        private static ResponseObject RestRequest(String ressource, String method, String payload, String hostName, int port)
         {
             try
             {
-                String requestUrl = "http://" + Eureka.hostName + ":" + Eureka.port + "/eureka/apps/" + ressource;
+                String requestUrl = "http://" + hostName + ":" + port + "/eureka/apps/" + ressource;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUrl);
                 request.Accept = "application/json";
                 request.Method = method;
@@ -172,6 +186,9 @@ namespace eureka_sharpener
 
         private class HeartbeatThread
         {
+            public  String eurekaHost { get; set; }
+
+            public int eurekaPort { get; set; }
             public Instance instance { get; set; }
 
             public int renewalInterval { get; set; } = 30;
@@ -181,7 +198,7 @@ namespace eureka_sharpener
                 {
                     while (true)
                     {
-                        RestRequest(instance.app + "/" + instance.instanceId, "PUT", null);
+                        RestRequest(instance.app + "/" + instance.instanceId, "PUT", null, eurekaHost, eurekaPort);
                         System.Threading.Thread.Sleep(renewalInterval * 1000);
                     }
                 }

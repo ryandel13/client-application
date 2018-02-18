@@ -1,0 +1,11 @@
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\eureka-mirror.exe.config
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\eureka-mirror.exe
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\eureka-mirror.pdb
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\eureka-sharpener.dll
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\eureka-sharpener.pdb
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\obj\Debug\eureka-mirror.csprojResolveAssemblyReference.cache
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\obj\Debug\eureka-mirror.csproj.CoreCompileInputs.cache
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\obj\Debug\eureka-mirror.exe
+C:\Users\MalteChristjan\source\repos\MasterThesis\eureka-mirror\obj\Debug\eureka-mirror.pdb

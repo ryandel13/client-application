@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MasterThesis.ExchangeObjects;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,9 +33,30 @@ namespace MasterThesis.WindowComponents.Views
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 content.Content = message;
+
+                if(message.Equals("LOCK", StringComparison.InvariantCultureIgnoreCase))
+                {
+
+                    Bitmap img = (Bitmap)global::MasterThesis.Properties.Resources.ResourceManager.GetObject("car_doors_closed");
+                    if (img != null)
+                    {
+                        this.picture.Source = BitmapHelper.getBitmapSourceFromBitmap(img);           
+                    }
+                    content.Content = "Car has been locked";
+                } else if (message.Equals("LOCK", StringComparison.InvariantCultureIgnoreCase))
+                {
+
+                    Bitmap img = (Bitmap)global::MasterThesis.Properties.Resources.ResourceManager.GetObject("car_doors_opened");
+                    if (img != null)
+                    {
+                        this.picture.Source = BitmapHelper.getBitmapSourceFromBitmap(img);
+                    }
+                    content.Content = "Car has been opened";
+                }
+
                 this.Visibility = Visibility.Visible;
                 dispatcherTimer.Tick += new EventHandler(CloseWindow);
-                dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
                 dispatcherTimer.Start();
             }));
            }
