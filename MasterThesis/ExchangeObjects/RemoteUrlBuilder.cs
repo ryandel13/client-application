@@ -25,11 +25,12 @@ namespace MasterThesis.ExchangeObjects
             ports.Add(SERVICE.SDS, Int32.Parse(global::MasterThesis.Properties.Settings.Default.sdsPort));
             ports.Add(SERVICE.CES, Int32.Parse(global::MasterThesis.Properties.Settings.Default.cesPort));
             ports.Add(SERVICE.POI, Int32.Parse(global::MasterThesis.Properties.Settings.Default.poiPort));
+            ports.Add(SERVICE.MSS, Int32.Parse(global::MasterThesis.Properties.Settings.Default.mssPort));
         }
         private IDictionary<SERVICE, int> ports = new Dictionary<SERVICE, int>();
 
         public enum SERVICE {
-            VDS, SDS, CES, POI
+            VDS, SDS, CES, POI, MSS
         }
         public static Uri getUriFor(SERVICE service, String context, String ressource)
         {

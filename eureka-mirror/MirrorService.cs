@@ -31,13 +31,14 @@ namespace eureka_mirror
                 Instance ces = null;
                 if (registry != null)
                 {
-                    ces = registry.FindInstance("command-execution-service");
+                    ces = registry.FindInstance("music-streaming-service");
                 }
                 if (ces != null)
                 {
                     if (cesLocal == null)
                     {
                         System.Console.Out.WriteLine("--> Adding " + ces.instanceId + " to local registry");
+                        ces.hostName = "ryandel.selfhost.me";
                         cesLocal = local.Register(ces.app, ces.port.port, ces.hostName);
                     }
                 }

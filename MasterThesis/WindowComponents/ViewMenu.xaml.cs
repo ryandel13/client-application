@@ -38,13 +38,23 @@ namespace MasterThesis.WindowComponents
         {
             Eureka eureka = new Eureka("localhost", 8761);
             Registry registry = eureka.ReadRegistry();
-            Instance instance = registry.FindInstance("poi-service");
-            if(instance == null)
+            Instance poiInstance = registry.FindInstance("poi-service");
+            if(poiInstance == null)
             {
                 this.NaviBtn.Enabled(false);
             } else
             {
                 this.NaviBtn.Enabled(true);
+            }
+
+            Instance mssinstance = registry.FindInstance("music-streaming-service");
+            if (mssinstance == null)
+            {
+                this.MusicBtn.Enabled(false);
+            }
+            else
+            {
+                this.MusicBtn.Enabled(true);
             }
         }
 
@@ -56,6 +66,11 @@ namespace MasterThesis.WindowComponents
         private void NaviBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).setViewPort(Navigation.getInstance());
+        }
+
+        private void MusicBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).setViewPort(MusicView.getInstance());
         }
     }
 }

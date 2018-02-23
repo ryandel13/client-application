@@ -39,7 +39,7 @@ namespace MasterThesis.WindowComponents
         {
             try {
             String remoteUrl = global::MasterThesis.Properties.Settings.Default.remoteConnection;
-            WebRequest request = WebRequest.Create("http://" + remoteUrl + ":8801/vehicle/WP0ZZZ94427/temperature_inside/");
+            WebRequest request = WebRequest.Create("http://localhost:8801/vehicle/WP0ZZZ94427/temperature_inside/");
             WebResponse response = request.GetResponse();
 
             Stream dataStream = response.GetResponseStream();
@@ -50,9 +50,12 @@ namespace MasterThesis.WindowComponents
 
             DataResponse dataResponse = JsonConvert.DeserializeObject<DataResponse>(responseFromServer);
             TemperatureText.Text = dataResponse.values.First().value + "°C";
-        }catch (Exception ex)
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            }
+            catch (Exception ex)
             {
-                System.Console.Out.WriteLine(ex.Message);
+                System.Console.Out.WriteLine("VDS:No data: " + ex.Message);
+                dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             }
         }
     }

@@ -8,7 +8,7 @@
              d:DesignHeight="400" d:DesignWidth="150">
     <StackPanel>
         <local:MenuItem x:Name="HomeBtn" ItemTitle="Home" BackGroundImage="menu_home"></local:MenuItem>
-        <local:MenuItem x:Name="MusicBtn" ItemTitle="Music" BackGroundImage="menu_music"></local:MenuItem>
+        <local:MenuItem x:Name="MusicBtn" ItemTitle="Music" BackGroundImage="menu_music" MouseDoubleClick="MusicBtn_MouseDoubleClick"></local:MenuItem>
         <local:MenuItem x:Name="NaviBtn" ItemTitle="Navi"  BackGroundImage="menu_gps" MouseDoubleClick="NaviBtn_MouseDoubleClick"></local:MenuItem>
         <local:MenuItem x:Name="SensorBtn" ItemTitle="Sensor"  BackGroundImage="menu_sensor" MouseDoubleClick="SensorBtn_MouseDoubleClick"></local:MenuItem>
     </StackPanel>

@@ -20,5 +20,8 @@
     <Setting Name="vin" Type="System.String" Scope="Application">
       <Value Profile="(Default)">WP0ZZZ94427</Value>
     </Setting>
+    <Setting Name="mssPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8806</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

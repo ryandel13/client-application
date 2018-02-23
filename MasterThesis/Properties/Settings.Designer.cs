@@ -76,5 +76,17 @@ namespace MasterThesis.Properties {
                 return ((string)(this["vin"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8806")]
+        public string mssPort {
+            get {
+                return ((string)(this["mssPort"]));
+            }
+            set {
+                this["mssPort"] = value;
+            }
+        }
     }
 }

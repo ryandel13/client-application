@@ -71,7 +71,7 @@ namespace MasterThesis.WindowComponents.Views
             try
             {
                 String remoteUrl = global::MasterThesis.Properties.Settings.Default.remoteConnection;
-                WebRequest request = WebRequest.Create(RemoteUrlBuilder.getUriFor(RemoteUrlBuilder.SERVICE.VDS, "vehicle", "temperature_inside/history").ToString());
+                WebRequest request = WebRequest.Create(RemoteUrlBuilder.getUriFor(RemoteUrlBuilder.SERVICE.VDS, "vehicle", "temperature_inside/history", true).ToString());
                 WebResponse response = request.GetResponse();
 
                 Stream dataStream = response.GetResponseStream();
