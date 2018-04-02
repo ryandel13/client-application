@@ -7,7 +7,7 @@
              xmlns:conv="clr-namespace:MasterThesis.ExchangeObjects"
              xmlns:Chart="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="650">
+             d:DesignHeight="460" d:DesignWidth="1110">
     <UserControl.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -15,7 +15,7 @@
         </LinearGradientBrush>
     </UserControl.Background>
     <Grid>
-        <Chart:BasicChart x:Name="MyChart" Height="350" Width="630" 
+        <Chart:BasicChart x:Name="MyChart" Height="460" Width="1110" 
                        DataCollectionName="MyData"   
                        DisplayMemberLabels="Frequency"
                        DisplayMemberValues="Value"

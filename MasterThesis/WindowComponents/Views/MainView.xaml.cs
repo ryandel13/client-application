@@ -14,22 +14,32 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MasterThesis.WindowComponents
+namespace MasterThesis.WindowComponents.Views
 {
     /// <summary>
-    /// Interaktionslogik für MainHeader.xaml
+    /// Interaktionslogik für MainMenu.xaml
     /// </summary>
-    public partial class MainHeader : UserControl
+    public partial class MainView : UserControl
     {
-        public MainHeader()
+        private static MainView instance;
+
+        public static MainView getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new MainView();
+            }
+            return instance;
+        }
+
+        public MainView()
         {
             InitializeComponent();
         }
 
-        private void ToggleRASConnection(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ConnectionController conControl = new ConnectionController();
-            conControl.ToggleConnection();
+            MainViewController.ToggleFullscreen();
         }
     }
 }

@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="160">
-    <Grid Width="160" Height="50" Background="#FF404040">
+             d:DesignHeight="50" d:DesignWidth="200">
+    <Grid Width="200" Height="50" Background="#FF404040">
             <TextBlock Name="Title" Text="Button" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
         <Image HorizontalAlignment="Center" Height="40" Name="Icon" Margin="30,5,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>

@@ -99,6 +99,7 @@ namespace eureka_sharpener
 
         public Boolean Unregister(Instance instance)
         {
+            if (instance == null) return false;
             Thread t = instance.HeartbeatThread;
             t.Abort();
 

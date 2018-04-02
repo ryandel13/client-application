@@ -102,6 +102,7 @@ namespace MasterThesis.WindowComponents.Views
             {
                 String remoteUrl = global::MasterThesis.Properties.Settings.Default.remoteConnection;
                 WebRequest request = WebRequest.Create(RemoteUrlBuilder.getUriFor(RemoteUrlBuilder.SERVICE.POI, "poi", "?latitude=0&longitude=0&cached=true&callback=true", true).ToString());
+                request.Timeout = 500;
                 WebResponse response = request.GetResponse();
 
                 Stream dataStream = response.GetResponseStream();

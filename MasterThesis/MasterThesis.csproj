@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotRas">
+      <HintPath>..\..\src\DotRas\bin\Debug\DotRas.dll</HintPath>
+    </Reference>
     <Reference Include="DynamicDataDisplay, Version=0.3.0.1, Culture=neutral, PublicKeyToken=5b7d744a7263923f, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamicDataDisplay.0.3.0.1\lib\net45\DynamicDataDisplay.dll</HintPath>
     </Reference>
@@ -82,6 +85,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\ConnectionController.cs" />
+    <Compile Include="Controller\MainViewController.cs" />
+    <Compile Include="Controller\VolumeController.cs" />
     <Compile Include="ExchangeObjects\BitmapHelper.cs" />
     <Compile Include="ExchangeObjects\CheckBoxClass.cs" />
     <Compile Include="ExchangeObjects\DataPoint.cs" />
@@ -130,6 +136,9 @@
     </Compile>
     <Compile Include="WindowComponents\ViewPort.xaml.cs">
       <DependentUpon>ViewPort.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowComponents\Views\MusicView.xaml.cs">
       <DependentUpon>MusicView.xaml</DependentUpon>
@@ -189,8 +198,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowComponents\MusicListControl.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WindowComponents\SignalIndicator.xaml">
       <SubType>Designer</SubType>
@@ -208,9 +217,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowComponents\Views\MusicView.xaml">
+    <Page Include="WindowComponents\Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Views\MusicView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WindowComponents\Views\Navigation.xaml">
       <SubType>Designer</SubType>
@@ -265,73 +278,76 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\CPU-512.png" />
+    <None Include="Resources\CPU-512.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\icon-gps-tracking.png" />
+    <None Include="Resources\icon-gps-tracking.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\music-note-5.png" />
+    <None Include="Resources\music-note-5.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\zzzzhome.png" />
+    <None Include="Resources\zzzzhome.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\car_doors_closed.png" />
+    <None Include="Resources\car_doors_closed.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\car_doors_opened.png" />
+    <None Include="Resources\car_doors_opened.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\navi_static.gif" />
+    <None Include="Resources\navi_static.gif" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\navi_pin.png" />
+    <None Include="Resources\navi_pin.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\indicator_signal.png" />
+    <None Include="Resources\indicator_signal.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\indicator_signal_0.png" />
+    <None Include="Resources\indicator_signal_0.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\indicator_signal_25.png" />
+    <None Include="Resources\indicator_signal_25.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\indicator_signal_50.png" />
+    <None Include="Resources\indicator_signal_50.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\indicator_signal_75.png" />
+    <None Include="Resources\indicator_signal_75.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\indicator_signal_100.png" />
+    <None Include="Resources\indicator_signal_100.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\media-next.png" />
+    <None Include="Resources\media-next.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\volume-down.png" />
+    <None Include="Resources\volume-down.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\volume-up.png" />
+    <None Include="Resources\volume-up.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\media-play-pause-resume.png" />
+    <None Include="Resources\media-play-pause-resume.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\media-previous.png" />
+    <None Include="Resources\media-previous.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tasks\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\navi_pin_remote.png" />
+    <None Include="Resources\navi_pin_remote.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eureka-sharpener\eureka-sharpener.csproj">
       <Project>{CD189682-E319-4389-8442-055E1CB577E5}</Project>
       <Name>eureka-sharpener</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

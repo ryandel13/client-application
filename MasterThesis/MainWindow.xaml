@@ -7,24 +7,26 @@
         xmlns:lokal="clr-namespace:MasterThesis.WindowComponents"
         xmlns:views="clr-namespace:MasterThesis.WindowComponents.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1024" Background="#FF3A3A3A" ResizeMode="NoResize">
-    <WrapPanel>
-        <StackPanel>
-            <WrapPanel Height="50">
-                <lokal:MainHeader Width="1024" Height="50"></lokal:MainHeader>
-            </WrapPanel>
-            <WrapPanel Height="460">
-                <Grid>
-                    <lokal:ViewMenu HorizontalAlignment="Left" Width="150" Margin="10,0,0,0"/>
-                    <WrapPanel Width="50"></WrapPanel>
-                    <lokal:ViewPort HorizontalAlignment="Left" x:Name="ViewPort" Margin="170,0,0,0"></lokal:ViewPort>
-                </Grid>
-            </WrapPanel>
-            <WrapPanel Height="51" Margin="-20,0,0,0" HorizontalAlignment="Center" Width="1024">
-                <lokal:MainFooter HorizontalAlignment="Center" Width="1024"/>
-            </WrapPanel>
-        </StackPanel>
-        <views:PopUp Margin="300,-600,0,0" RenderTransformOrigin="1.241,0.318" Panel.ZIndex="100" Visibility="Hidden" x:Name="message">
+        Title="Masterthesis" Height="720" Width="1280" Background="#FF3A3A3A" ResizeMode="NoResize">
+    <Viewbox Stretch="Fill">
+        <WrapPanel Width="1280">
+            <StackPanel Width="1280">
+                <WrapPanel Height="50">
+                    <lokal:MainHeader Width="1280" Height="50"></lokal:MainHeader>
+                </WrapPanel>
+                <WrapPanel Height="460">
+                    <Grid>
+                        <lokal:ViewMenu HorizontalAlignment="Left" Width="150" Margin="10,0,0,0"/>
+                        <WrapPanel Width="50"></WrapPanel>
+                        <lokal:ViewPort HorizontalAlignment="Left" x:Name="ViewPort" Margin="170,0,-281,-45" Width="1110"></lokal:ViewPort>
+                    </Grid>
+                </WrapPanel>
+                <WrapPanel Height="51" Margin="-20,0,0,0" HorizontalAlignment="Center" Width="1280">
+                    <lokal:MainFooter HorizontalAlignment="Center" Width="1280"/>
+                </WrapPanel>
+            </StackPanel>
+            <views:PopUp Margin="300,-600,0,0" RenderTransformOrigin="1.241,0.318" Panel.ZIndex="100" Visibility="Hidden" x:Name="message">
             </views:PopUp>
-    </WrapPanel>
+        </WrapPanel>
+    </Viewbox>
 </Window>

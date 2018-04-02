@@ -1,5 +1,6 @@
 ﻿using eureka_sharpener;
 using eureka_sharpener.elements;
+using MasterThesis.Controller;
 using MasterThesis.WindowComponents.Views;
 using System;
 using System.Collections.Generic;
@@ -72,12 +73,6 @@ namespace MasterThesis
             //Window popup = new PopUpMessage();
             //popup.Show();
             this.message.Show(message);
-        }
-
-        public void SetBackground()
-        {
-            Brush brush = new SolidColorBrush(Colors.AliceBlue);
-            this.Background = brush;
         }
 
         private void OnApplicationExit(object sender, EventArgs e)

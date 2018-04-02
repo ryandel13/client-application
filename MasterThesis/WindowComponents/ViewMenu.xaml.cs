@@ -38,6 +38,12 @@ namespace MasterThesis.WindowComponents
         {
             Eureka eureka = new Eureka("localhost", 8761);
             Registry registry = eureka.ReadRegistry();
+            if(registry == null) {
+                this.NaviBtn.Enabled(false);
+                this.MusicBtn.Enabled(false);
+                this.SensorBtn.Enabled(false);
+                return;
+            }
             Instance poiInstance = registry.FindInstance("poi-service");
             if(poiInstance == null)
             {
@@ -56,6 +62,16 @@ namespace MasterThesis.WindowComponents
             {
                 this.MusicBtn.Enabled(true);
             }
+
+            Instance vdsinstance = registry.FindInstance("variable-data-service");
+            if (vdsinstance == null)
+            {
+                this.SensorBtn.Enabled(false);
+            }
+            else
+            {
+                this.SensorBtn.Enabled(true);
+            }
         }
 
         private void SensorBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -71,6 +87,11 @@ namespace MasterThesis.WindowComponents
         private void MusicBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).setViewPort(MusicView.getInstance());
+        }
+
+        private void HomeBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).setViewPort(MainView.getInstance());
         }
     }
 }

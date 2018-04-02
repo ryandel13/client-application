@@ -14,7 +14,7 @@
             <local:Clock></local:Clock>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-            <local:SignalIndicator></local:SignalIndicator>
+            <local:SignalIndicator MouseDoubleClick="ToggleRASConnection"></local:SignalIndicator>
         </WrapPanel>
     </Grid>
 </UserControl>

@@ -5,11 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterThesis.WindowComponents.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="430" d:DesignWidth="830">
+      d:DesignHeight="430" d:DesignWidth="1110">
 
     <Grid Margin="0,0,-125,0">
-        <StackPanel Name="ContentDock" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="830">
-            <Label Content="Musik"/>
+        <StackPanel Name="ContentDock" HorizontalAlignment="Left" Height="430" VerticalAlignment="Top" Width="1110">
+            <Label Content="Musik" Foreground="White"/>
         </StackPanel>
     </Grid>
 </UserControl>
