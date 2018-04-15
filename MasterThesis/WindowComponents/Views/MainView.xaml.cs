@@ -1,4 +1,5 @@
 ﻿using MasterThesis.Controller;
+using MasterThesis.ExchangeObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,30 @@ namespace MasterThesis.WindowComponents.Views
         public MainView()
         {
             InitializeComponent();
+
+            ImageSource imgSrc3 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3);
+            ImageSource imgSrc2 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_2);
+            ImageSource imgSrc1 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background);
+
+            BackgroundSelect.Items.Add(imgSrc1);
+            BackgroundSelect.Items.Add(imgSrc2);
+            BackgroundSelect.Items.Add(imgSrc3);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainViewController.ToggleFullscreen();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            MainViewController.SetBackground((ImageSource)cb.SelectedValue);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

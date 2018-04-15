@@ -1,6 +1,7 @@
 ﻿using eureka_sharpener;
 using eureka_sharpener.elements;
 using MasterThesis.Controller;
+using MasterThesis.ExchangeObjects;
 using MasterThesis.WindowComponents.Views;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,16 @@ namespace MasterThesis
             Application.Current.Exit += new ExitEventHandler(this.OnApplicationExit);
 
             instance = this;
+
+            ImageBrush backgroundBrush = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3));
+
+            MainPanel.Background = backgroundBrush;
+        }
+
+        internal void SetBackgroundImage(ImageSource image)
+        {
+            ImageBrush backgroundBrush = new ImageBrush(image);
+            MainPanel.Background = backgroundBrush;
         }
 
         private void Current_Exit(object sender, ExitEventArgs e)

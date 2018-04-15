@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="800">
-    <Grid Width="800" Height="50">
+             d:DesignHeight="100" d:DesignWidth="1280">
+    <Grid Width="1200" Height="50">
         <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
             <local:TemperatureIndicator></local:TemperatureIndicator>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <local:Clock></local:Clock>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <local:Clock/>
         </WrapPanel>
         <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Center">
             <local:SignalIndicator MouseDoubleClick="ToggleRASConnection"></local:SignalIndicator>

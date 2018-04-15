@@ -43,6 +43,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SpotifyAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpotifyAPI-NET.2.18.1\lib\SpotifyAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -87,6 +90,7 @@
     </ApplicationDefinition>
     <Compile Include="Controller\ConnectionController.cs" />
     <Compile Include="Controller\MainViewController.cs" />
+    <Compile Include="Controller\SpotifyController.cs" />
     <Compile Include="Controller\VolumeController.cs" />
     <Compile Include="ExchangeObjects\BitmapHelper.cs" />
     <Compile Include="ExchangeObjects\CheckBoxClass.cs" />
@@ -151,6 +155,9 @@
     </Compile>
     <Compile Include="WindowComponents\Views\PopUpMessage.xaml.cs">
       <DependentUpon>PopUpMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowComponents\Views\SpotifyView.xaml.cs">
+      <DependentUpon>SpotifyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowComponents\Views\TemperatureDiagram.xaml.cs">
       <DependentUpon>TemperatureDiagram.xaml</DependentUpon>
@@ -234,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowComponents\Views\PopUpMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowComponents\Views\SpotifyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -348,6 +359,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a96d8634620ddaf8cb6e50a8baeff812.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PORSCHE-LOGO-porsche-14335379-500-313.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\porsche-logo-8.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

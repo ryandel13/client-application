@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace MasterThesis.Controller
 {
@@ -30,6 +31,11 @@ namespace MasterThesis.Controller
                 global::MasterThesis.Properties.Settings.Default.fullscreen = false;
             }
             global::MasterThesis.Properties.Settings.Default.Save();
+        }
+
+        public static void SetBackground(ImageSource image)
+        {
+            GetMainWindow().SetBackgroundImage(image);
         }
     }
 }

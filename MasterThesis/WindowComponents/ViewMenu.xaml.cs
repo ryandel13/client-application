@@ -93,5 +93,9 @@ namespace MasterThesis.WindowComponents
         {
             ((MainWindow)Application.Current.MainWindow).setViewPort(MainView.getInstance());
         }
+        private void SpotifyBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).setViewPort(SpotifyView.getInstance());
+        }
     }
 }

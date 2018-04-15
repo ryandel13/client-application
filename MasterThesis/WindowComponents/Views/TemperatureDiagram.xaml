@@ -8,12 +8,7 @@
              xmlns:Chart="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="1110">
-    <UserControl.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Black" Offset="0"/>
-            <GradientStop Color="#FF515151" Offset="1"/>
-        </LinearGradientBrush>
-    </UserControl.Background>
+
     <Grid>
         <Chart:BasicChart x:Name="MyChart" Height="460" Width="1110" 
                        DataCollectionName="MyData"   
