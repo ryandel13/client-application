@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace eureka_mirror
@@ -15,10 +16,14 @@ namespace eureka_mirror
 
         Eureka local;
 
+        static Registry registry;
+
         Instance cesLocal = null;
         public Boolean CloneServices()
         {
             System.Console.Out.WriteLine("Updating local registry");
+     
+
             while (true)
             {
                 
@@ -26,7 +31,7 @@ namespace eureka_mirror
                 remote = new Eureka("ryandel.selfhost.me", 8761);
                 local = new Eureka("localhost", 8761);
 
-                Registry registry = remote.ReadRegistry();
+                registry = remote.ReadRegistry();
 
                 Instance ces = null;
                 if (registry != null)
@@ -48,6 +53,9 @@ namespace eureka_mirror
                     {
                         System.Console.Out.WriteLine("--> Pulling down " + cesLocal.instanceId + " on local registry");
                         local.TakeOut(cesLocal);
+                        
+                        System.Threading.Thread.Sleep(1000);
+                        local.Unregister(cesLocal);
                         cesLocal = null;
                     }
                 }
@@ -55,6 +63,11 @@ namespace eureka_mirror
                 System.Threading.Thread.Sleep(3000);
             }
             return true;
+        }
+
+        private static void StartInstance(object instance)
+        {
+
         }
 
     }
