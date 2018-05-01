@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="MasterThesis.WindowComponents.Views.SpotifyView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MasterThesis.WindowComponents.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="620" d:DesignWidth="1110">
+
+    <Grid Height="620">
+        <Image Name="AlbumArt" Height="500" Width="500" Margin="10,10,600,110"/>
+
+        <Label Content="TITEL" x:Name="Title" Foreground="#FFFFAE00" FontSize="48" HorizontalAlignment="Right" Width="585" Height="100" Margin="0,88,10,432" FontWeight="Bold"/>
+
+        <Label Content="AUTHOR" x:Name="Author" Foreground="#FFFFAE00" FontSize="36" HorizontalAlignment="Right" Width="585" Height="100" Margin="0,174,10,346" FontWeight="Bold"/>
+
+        <Label Content="ALBUM" x:Name="Album" Foreground="#FFFFAE00" FontSize="36" HorizontalAlignment="Right" Width="585" Height="100" Margin="0,230,10,290" FontWeight="Bold"/>
+
+        <ProgressBar Height="50" x:Name="Progress" HorizontalAlignment="Right" Width="1110"  Background="#FF343434" Foreground="#FFA8B006" VerticalAlignment="Center" Margin="0,538,0,32" />
+    </Grid>
+</UserControl>
