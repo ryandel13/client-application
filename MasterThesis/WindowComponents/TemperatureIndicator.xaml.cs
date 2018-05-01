@@ -32,7 +32,7 @@ namespace MasterThesis.WindowComponents
 
             dispatcherTimer.Tick += new EventHandler(UpdateTemperature);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            //dispatcherTimer.Start();
         }
 
         private void UpdateTemperature(object sender, EventArgs e)

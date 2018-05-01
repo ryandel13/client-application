@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MasterThesis.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace MasterThesis.WindowComponents
         public MainFooter()
         {
             InitializeComponent();
+        }
+
+        private void PlayBtn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MediaPlayerController.PlayResume();
+        }
+
+        private void NextBtn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MediaPlayerController.Forward();
         }
     }
 }

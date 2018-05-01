@@ -1,10 +1,12 @@
 ﻿using eureka_sharpener;
 using eureka_sharpener.elements;
+using MasterThesis.Controller;
 using MasterThesis.WindowComponents.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,54 +25,27 @@ namespace MasterThesis.WindowComponents
     /// </summary>
     public partial class ViewMenu : UserControl
     {
+        Dictionary<String, MenuItem> menuItems = new Dictionary<String, MenuItem>();
 
-        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+
         public ViewMenu()
         {
             InitializeComponent();
 
-            dispatcherTimer.Tick += new EventHandler(UpdateServices);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 3);
-            dispatcherTimer.Start();
+            menuItems.Add("poi-service", NaviBtn);
+            menuItems.Add("music-streaming-service", MusicBtn);
+            menuItems.Add("variable-data-service", SensorBtn);
+
+            Thread t = new Thread(() => MenuUpdateThread.Start(this, menuItems));
+            t.Start();
         }
 
-        private void UpdateServices(object sender, EventArgs e)
+        public void UpdateService(String serviceName, Boolean state)
         {
-            Eureka eureka = new Eureka("localhost", 8761);
-            Registry registry = eureka.ReadRegistry();
-            if(registry == null) {
-                this.NaviBtn.Enabled(false);
-                this.MusicBtn.Enabled(false);
-                this.SensorBtn.Enabled(false);
-                return;
-            }
-            Instance poiInstance = registry.FindInstance("poi-service");
-            if(poiInstance == null)
+            MenuItem button;
+            if(menuItems.TryGetValue(serviceName, out button))
             {
-                this.NaviBtn.Enabled(false);
-            } else
-            {
-                this.NaviBtn.Enabled(true);
-            }
-
-            Instance mssinstance = registry.FindInstance("music-streaming-service");
-            if (mssinstance == null)
-            {
-                this.MusicBtn.Enabled(false);
-            }
-            else
-            {
-                this.MusicBtn.Enabled(true);
-            }
-
-            Instance vdsinstance = registry.FindInstance("variable-data-service");
-            if (vdsinstance == null)
-            {
-                this.SensorBtn.Enabled(false);
-            }
-            else
-            {
-                this.SensorBtn.Enabled(true);
+                button.Enabled(state);
             }
         }
 

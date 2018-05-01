@@ -28,7 +28,7 @@ namespace MasterThesis.WindowComponents
         {
             dispatcherTimer.Tick += new EventHandler(UpdateClock);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            //dispatcherTimer.Start();
 
             InitializeComponent();
 

@@ -50,9 +50,11 @@ namespace MasterThesis.WindowComponents.Views
         public static void ReadMusicList()
         {
             Eureka registry = new Eureka("localhost", 8761);
-            Instance mssInstance = registry.ReadRegistry().FindInstance("music-streaming-service");
-
-            retrieveMusicList(mssInstance);
+            if (registry != null)
+            {
+               // Instance mssInstance = registry.ReadRegistry().FindInstance("music-streaming-service");
+               // retrieveMusicList(mssInstance);
+            }
         }
 
         private static void retrieveMusicList(Instance instance)

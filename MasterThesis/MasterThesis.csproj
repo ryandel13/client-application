@@ -90,7 +90,10 @@
     </ApplicationDefinition>
     <Compile Include="Controller\ConnectionController.cs" />
     <Compile Include="Controller\MainViewController.cs" />
+    <Compile Include="Controller\MediaPlayerController.cs" />
+    <Compile Include="Controller\MenuUpdateThread.cs" />
     <Compile Include="Controller\SpotifyController.cs" />
+    <Compile Include="Controller\SpotifyUpdateThread.cs" />
     <Compile Include="Controller\VolumeController.cs" />
     <Compile Include="ExchangeObjects\BitmapHelper.cs" />
     <Compile Include="ExchangeObjects\CheckBoxClass.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="ExchangeObjects\POI.cs" />
     <Compile Include="ExchangeObjects\RemoteUrlBuilder.cs" />
     <Compile Include="ExchangeObjects\ResponseEntity.cs" />
+    <Compile Include="Interfaces\MediaPlayer.cs" />
     <Compile Include="RESTInterface\CommandMessage.cs" />
     <Compile Include="RESTInterface\GpsResponse.cs" />
     <Compile Include="RESTInterface\Message.cs" />

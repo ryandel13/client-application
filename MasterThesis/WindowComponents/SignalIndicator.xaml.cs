@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,46 +30,59 @@ namespace MasterThesis.WindowComponents
         {
             InitializeComponent();
 
-            dispatcherTimer.Tick += new EventHandler(UpdateSignal);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            //dispatcherTimer.Tick += new EventHandler(UpdateSignal);
+            //dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            //dispatcherTimer.Start();
+            Indicator.Text = "";
+            Thread t = new Thread(UpdateThread);
+            t.Start();
         }
     
 
-        private void UpdateSignal(object sender, EventArgs e)
+        private void UpdateThread()
         {
-            Bitmap bmp = global::MasterThesis.Properties.Resources.indicator_signal;
-            Indicator.Text = "";
-            try
+            while (true)
             {
-                Ping ping = new Ping();
-                PingReply reply = ping.Send(Properties.Settings.Default.remoteConnection);
-
-                 // reply.RoundtripTime.ToString();
-
-
-
-                if (reply.RoundtripTime < 100)
+                try
                 {
-                    bmp = global::MasterThesis.Properties.Resources.indicator_signal_100;
+                    Bitmap bmp = global::MasterThesis.Properties.Resources.indicator_signal;
+                    Ping ping = new Ping();
+                    PingReply reply = ping.Send(Properties.Settings.Default.remoteConnection);
+
+                    if (reply.RoundtripTime < 100)
+                    {
+                        bmp = global::MasterThesis.Properties.Resources.indicator_signal_100;
+                    }
+                    else if (reply.RoundtripTime < 500)
+                    {
+                        bmp = global::MasterThesis.Properties.Resources.indicator_signal_75;
+                    }
+                    else if (reply.RoundtripTime < 1000)
+                    {
+                        bmp = global::MasterThesis.Properties.Resources.indicator_signal_50;
+                    }
+                    else
+                    {
+                        bmp = global::MasterThesis.Properties.Resources.indicator_signal_0;
+                    }
+
+                    UpdateSignal(bmp);
                 }
-                else if (reply.RoundtripTime < 500)
+                catch (Exception ex)
                 {
-                    bmp = global::MasterThesis.Properties.Resources.indicator_signal_75;
+                    //Expected exception
                 }
-                else if (reply.RoundtripTime < 1000)
-                {
-                    bmp = global::MasterThesis.Properties.Resources.indicator_signal_50;
-                }
-                else
-                {
-                    bmp = global::MasterThesis.Properties.Resources.indicator_signal_0;
-                }
-            }catch(Exception ex)
-            {
-                //Expected exception
+                Thread.Sleep(500);
             }
-                Indicator.Background = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(bmp));
+        }
+
+        private void UpdateSignal(Bitmap signalIcon)
+        {
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                Indicator.Background = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(signalIcon));
+            }));
+           
         }
     }
 }
