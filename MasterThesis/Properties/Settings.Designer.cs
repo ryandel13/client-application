@@ -77,27 +77,57 @@ namespace MasterThesis.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("8806")]
         public string mssPort {
             get {
                 return ((string)(this["mssPort"]));
             }
-            set {
-                this["mssPort"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool fullscreen {
             get {
                 return ((bool)(this["fullscreen"]));
             }
-            set {
-                this["fullscreen"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("COM11")]
+        public string comPortActor {
+            get {
+                return ((string)(this["comPortActor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("19200")]
+        public long baudRateActor {
+            get {
+                return ((long)(this["baudRateActor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:/Program Files (x86)/Navigator14/PC_Navigator/PC_Navigator.exe")]
+        public string NAVApplication {
+            get {
+                return ((string)(this["NAVApplication"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("--atlas=\'C:/ProgramData/Navigator/14.1/atlas_pcn_free.idc\'")]
+        public string NAVApplication_Params {
+            get {
+                return ((string)(this["NAVApplication_Params"]));
             }
         }
     }

@@ -52,8 +52,8 @@ namespace MasterThesis.WindowComponents.Views
             Eureka registry = new Eureka("localhost", 8761);
             if (registry != null)
             {
-               // Instance mssInstance = registry.ReadRegistry().FindInstance("music-streaming-service");
-               // retrieveMusicList(mssInstance);
+               Instance mssInstance = registry.ReadRegistry().FindInstance("music-streaming-service");
+               retrieveMusicList(mssInstance);
             }
         }
 

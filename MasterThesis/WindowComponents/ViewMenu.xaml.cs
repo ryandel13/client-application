@@ -32,7 +32,7 @@ namespace MasterThesis.WindowComponents
         {
             InitializeComponent();
 
-            menuItems.Add("poi-service", NaviBtn);
+           // menuItems.Add("poi-service", NaviBtn);
             menuItems.Add("music-streaming-service", MusicBtn);
             menuItems.Add("variable-data-service", SensorBtn);
 
@@ -70,7 +70,7 @@ namespace MasterThesis.WindowComponents
         }
         private void SpotifyBtn_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-           // ((MainWindow)Application.Current.MainWindow).setViewPort(SpotifyView.getInstance());
+           ((MainWindow)Application.Current.MainWindow).setViewPort(SpotifyView.getInstance());
         }
     }
 }

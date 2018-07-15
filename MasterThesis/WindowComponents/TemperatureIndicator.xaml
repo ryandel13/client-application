@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="NoWrap" Name="TemperatureText" Text="--.--°C" VerticalAlignment="Bottom" Foreground="White" Width="100" TextAlignment="Center" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="NoWrap" Name="TemperatureText" Text="--.--°C" VerticalAlignment="Bottom" Foreground="White" Width="100" TextAlignment="Center" FontSize="36"/>
     </Grid>
 </UserControl>

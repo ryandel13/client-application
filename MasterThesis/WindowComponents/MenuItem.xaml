@@ -5,9 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="150">
-    <Grid Width="150" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Margin="0,0" Height="60" Name="Grid">
+             d:DesignHeight="120" d:DesignWidth="200">
+
+    <Grid Width="200" Margin="0,0" Height="100" Name="Grid">
         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="ITEM" Name="Title" Foreground="White"/>
-        <Image Name="Icon" HorizontalAlignment="Right" Height="40" Margin="0,10,55,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.794,0.511" />
+        <Image Name="Icon" Height="50" Margin="75,25,75,25" Width="50"  />
+        <Canvas Name="Overlay" Panel.ZIndex="3" Opacity="0.1" Visibility="Hidden">
+            <Canvas.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="Red" Offset="0.34"/>
+                </RadialGradientBrush>
+            </Canvas.Background>
+        </Canvas>
     </Grid>
 </UserControl>

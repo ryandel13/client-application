@@ -18,12 +18,18 @@ namespace MasterThesis.Controller
 
         public static void PlayResume()
         {
-            currentPlayer.PlayPauseResume();
+            if (currentPlayer != null)
+            {
+                currentPlayer.PlayPauseResume();
+            }
         }
 
         public static void Forward()
         {
-            currentPlayer.Forward();
+            if (currentPlayer != null)
+            {
+                currentPlayer.Forward();
+            }
         }
     }
 }

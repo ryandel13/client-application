@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,24 +22,30 @@ namespace MasterThesis.WindowComponents
     /// </summary>
     public partial class Clock : UserControl
     {
-        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-        
-
         public Clock()
         {
-            dispatcherTimer.Tick += new EventHandler(UpdateClock);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            //dispatcherTimer.Start();
-
             InitializeComponent();
 
-            
+            Thread t = new Thread(UpdateClockThread);
+            t.Start();
         }
 
-        private void UpdateClock(object sender, EventArgs e)
+        private void UpdateClock()
         {
-            DateTime date = DateTime.Now;
-            this.ClockTime.Text = date.Hour.ToString("D2") + ":" + date.Minute.ToString("D2"); ;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                DateTime date = DateTime.Now;
+                this.ClockTime.Text = date.Hour.ToString("D2") + ":" + date.Minute.ToString("D2"); ;
+            }));
+        }
+
+        private void UpdateClockThread()
+        {
+            while(true)
+            {
+                UpdateClock();
+                Thread.Sleep(500);
+            }
         }
     }
 }

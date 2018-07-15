@@ -75,6 +75,7 @@ namespace MasterThesis.WindowComponents.Views
                     Author.Content = author;
                     Album.Content = album;
                     AlbumArt.Source = BitmapHelper.getBitmapSourceFromBitmap(albumArt);
+                      
                 }
                 
                     Progress.Value = Convert.ToInt32(status);

@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="1280">
-    <Grid Width="1200" Height="50">
+             d:DesignHeight="100" d:DesignWidth="1180">
+    <Grid Width="1140" Height="60">
         <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
             <local:TemperatureIndicator></local:TemperatureIndicator>
         </WrapPanel>

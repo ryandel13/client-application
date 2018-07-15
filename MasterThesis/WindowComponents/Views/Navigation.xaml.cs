@@ -1,21 +1,26 @@
-﻿using MasterThesis.ExchangeObjects;
+﻿using MasterThesis.Controller;
+using MasterThesis.ExchangeObjects;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace MasterThesis.WindowComponents.Views
 {
@@ -31,98 +36,146 @@ namespace MasterThesis.WindowComponents.Views
             if(instance == null)
             {
                 instance = new Navigation();
+                instance.StartUp();
             }
             return instance;
         }
-        private Navigation()
+        private static bool started;
+
+        private static bool isConfigured = false;
+
+        private Panel pnl;
+        [DllImport("user32.dll")]
+        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+        [DllImport("user32.dll")]
+        static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern bool GetWindowRect(IntPtr hwnd, out RECT lpRect);
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
         {
+            public int Left;        // x position of upper-left corner
+            public int Top;         // y position of upper-left corner
+            public int Right;       // x position of lower-right corner
+            public int Bottom;      // y position of lower-right corner
+        }
+
+        public enum MouseActionAdresses
+        {
+            LEFTDOWN = 0x00000002,
+            LEFTUP = 0x00000004,
+            MIDDLEDOWN = 0x00000020,
+            MIDDLEUP = 0x00000040,
+            MOVE = 0x00000001,
+            ABSOLUTE = 0x00008000,
+            RIGHTDOWN = 0x00000008,
+            RIGHTUP = 0x00000010
+        }
+
+        public Navigation()
+        {
+            pnl = new Panel();
+            pnl.Width = 1060;
+            pnl.Height = 600;
             InitializeComponent();
 
-            this.MainGrid.Background = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.navi_static));
-            /*
-            POI poi1 = new POI();
-            poi1.Title = "Schloss";
-            poi1.XAxis = 20;
-            poi1.YAxis = 60;
-
-            POI poi2 = new POI();
-            poi2.Title = "BlaBla";
-            poi2.XAxis = 320;
-            poi2.YAxis = 260;
-
-            POI poi3 = new POI();
-            poi3.Title = "BlaBla";
-            poi3.XAxis = 200;
-            poi3.YAxis = 10;
-
-            AddPOI(poi1);
-            AddPOI(poi2);
-            AddPOI(poi3);*/
-
-            retrievePOI();
-        }
-        internal void addPoiByGps(RESTInterface.GpsResponse resp)
-        {
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                POI newPOI = new POI();
-                newPOI.title = resp.name;
-                newPOI.latitude = (int)resp.latitude;
-                newPOI.longitude = (int)resp.longitude;
-                newPOI.marker = resp.marker;
-
-                AddPOI(newPOI);
-            }));
-
-            
-        }
-        private void AddPOI(POI poiInfo)
-        {
-            Image poi = new Image();
-            if (poiInfo.marker.Equals("remote"))
-            {
-                poi.Source = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.navi_pin_remote);
-            } else
-            {
-                poi.Source = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.navi_pin);
-            }
-            poi.HorizontalAlignment = HorizontalAlignment.Left;
-            poi.VerticalAlignment = VerticalAlignment.Top;
-            poi.Height = 20;
-            poi.Width = 20;
-            poi.Margin = new Thickness(poiInfo.longitude, poiInfo.latitude, 0, 0);
-
-            this.MainGrid.Children.Add(poi);
+            pnl.Resize += new EventHandler(Resize);
         }
 
-        private void retrievePOI()
+        private void Resize(object sender, EventArgs e)
         {
-            List<POI> dataResponse = null;
-            try
-            {
-                String remoteUrl = global::MasterThesis.Properties.Settings.Default.remoteConnection;
-                WebRequest request = WebRequest.Create(RemoteUrlBuilder.getUriFor(RemoteUrlBuilder.SERVICE.POI, "poi", "?latitude=0&longitude=0&cached=true&callback=true", true).ToString());
-                request.Timeout = 500;
-                WebResponse response = request.GetResponse();
+            this.Resize();
+        }
 
-                Stream dataStream = response.GetResponseStream();
-                // Open the stream using a StreamReader for easy access.
-                StreamReader reader = new StreamReader(dataStream);
-                // Read the content.
-                string responseFromServer = reader.ReadToEnd();
+        public void StartUp()
+        {
+            String pName = global::MasterThesis.Properties.Settings.Default.NAVApplication;
+            String pParam = global::MasterThesis.Properties.Settings.Default.NAVApplication_Params;
 
-                dataResponse = JsonConvert.DeserializeObject<List<POI>>(responseFromServer);
-            }
-            catch (Exception e)
+            if (!File.Exists(pName))
             {
-                System.Console.Out.WriteLine("Error occured during webrequest");
+                return;
             }
-            if(dataResponse != null) {
-                foreach (POI p in dataResponse)
+            else
+            {
+                isConfigured = true;
+            }
+
+            RECT rect = new RECT();
+            const short SWP_NOMOVE = 0X2;
+            const short SWP_NOSIZE = 1;
+            const short SWP_NOZORDER = 0X4;
+            const int SWP_SHOWWINDOW = 0x0040;
+
+            Process p;
+
+            if (Static.GetProcess() == null)
+            {
+
+
+                if (Process.GetProcessesByName("PC_Navigator").Length > 0)
                 {
-                    this.AddPOI(p);
+                    //Don't trust a running service!
+                    p = Process.GetProcessesByName("PC_Navigator")[0];
+
+                    p.Kill();
                 }
+
+
+                p = Process.Start(pName, pParam);
+                Thread.Sleep(3000);
+                emulateClick(950, 1010);
+                Static.SetProcess(p);
             }
+
+            if (!started)
+            {
+
+                p = Static.GetProcess();
+                //SetWindowPos(p.MainWindowHandle, 0, 0, 0, 1920, 1080, SWP_NOZORDER | SWP_SHOWWINDOW);
+
+                GetWindowRect(p.MainWindowHandle, out rect);
+
+                SetWindowPos(p.MainWindowHandle, 0, 0, 0, (rect.Right - rect.Left), (rect.Bottom - rect.Top), 0);
+
+
+                WFH.Child = pnl;
+                SetParent(p.MainWindowHandle, pnl.Handle);
+
+                SetWindowPos(p.MainWindowHandle, 0, 0, 0, pnl.Width, pnl.Height, 0);
+                started = true;
+            }
+        }
+
+        private void Resize()
+        {
+            if (isConfigured && started)
+            {
+                SetWindowPos(Static.GetProcess().MainWindowHandle, 0, 0, 0, pnl.Width, pnl.Height, 0);
+            }
+        }
+
+        private void emulateClick(int x, int y)
+        {
+            System.Windows.Forms.Cursor.Position = new System.Drawing.Point(x, y);
+            mouse_event((int)(MouseActionAdresses.LEFTDOWN), 0, 0, 0, 0);
+            mouse_event((int)(MouseActionAdresses.LEFTUP), 0, 0, 0, 0);
+        }
+
+        internal void HideWindow()
+        {
+            if (isConfigured && started)
+            {
+                SetWindowPos(Static.GetProcess().MainWindowHandle, 0, 0, 0, 0, 0, 0);
+            }
+        }
+
+        internal void RestoreWindow()
+        {
+            this.Resize();
         }
     }
 }

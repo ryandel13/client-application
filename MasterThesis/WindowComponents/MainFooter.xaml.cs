@@ -35,5 +35,10 @@ namespace MasterThesis.WindowComponents
         {
             MediaPlayerController.Forward();
         }
+
+        private void MuteBtn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            VolumeController.Mute();
+        }
     }
 }

@@ -48,9 +48,9 @@ namespace MasterThesis
 
             instance = this;
 
-            ImageBrush backgroundBrush = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3));
+            //ImageBrush backgroundBrush = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3));
 
-            MainPanel.Background = backgroundBrush;
+            //MainPanel.Background = backgroundBrush;
         }
 
         internal void SetBackgroundImage(ImageSource image)

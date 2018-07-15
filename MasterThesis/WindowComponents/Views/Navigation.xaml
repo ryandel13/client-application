@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterThesis.WindowComponents.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="430" d:DesignWidth="830">
+      d:DesignHeight="540" d:DesignWidth="1080">
 
-    <Grid Width="830" Height="430" Name="MainGrid">
-        
+    <Grid Width="1060" Height="600" Name="MainGrid">
+        <WindowsFormsHost Name="WFH" ClipToBounds="True"/>
     </Grid>
 </UserControl>

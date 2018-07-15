@@ -24,15 +24,11 @@ namespace MasterThesis.WindowComponents
     /// </summary>
     public partial class SignalIndicator : UserControl
     {
-        System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
 
         public SignalIndicator()
         {
             InitializeComponent();
 
-            //dispatcherTimer.Tick += new EventHandler(UpdateSignal);
-            //dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            //dispatcherTimer.Start();
             Indicator.Text = "";
             Thread t = new Thread(UpdateThread);
             t.Start();

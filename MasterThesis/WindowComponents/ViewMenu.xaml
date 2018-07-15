@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="150">
+             d:DesignHeight="600" d:DesignWidth="200">
     <StackPanel>
         <local:MenuItem x:Name="HomeBtn" ItemTitle="Home" BackGroundImage="menu_home" MouseLeftButtonUp="HomeBtn_MouseDoubleClick"></local:MenuItem>
         <local:MenuItem x:Name="MusicBtn" ItemTitle="Music" BackGroundImage="menu_music" MouseLeftButtonUp="MusicBtn_MouseDoubleClick"></local:MenuItem>
-        <local:MenuItem x:Name="SpotifyBtn" ItemTitle="Spotify" BackGroundImage="menu_music" MouseLeftButtonUp="SpotifyBtn_MouseDoubleClick"></local:MenuItem>
+        <local:MenuItem x:Name="SpotifyBtn" ItemTitle="Spotify" BackGroundImage="Link_Spotify" MouseLeftButtonUp="SpotifyBtn_MouseDoubleClick"></local:MenuItem>
         <local:MenuItem x:Name="NaviBtn" ItemTitle="Navi"  BackGroundImage="menu_gps" MouseLeftButtonUp="NaviBtn_MouseDoubleClick"></local:MenuItem>
         <local:MenuItem x:Name="SensorBtn" ItemTitle="Sensor"  BackGroundImage="menu_sensor" MouseLeftButtonUp="SensorBtn_MouseDoubleClick"></local:MenuItem>
     </StackPanel>

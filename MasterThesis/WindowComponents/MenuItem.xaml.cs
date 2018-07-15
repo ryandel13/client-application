@@ -58,14 +58,20 @@ namespace MasterThesis.WindowComponents
 
         public void Enabled(Boolean enabled)
         {
-            this.IsEnabled = enabled;
-            if(enabled)
+            Dispatcher.BeginInvoke(new Action(() =>
             {
-                Grid.Background = new SolidColorBrush(System.Windows.Media.Colors.Aqua);
-            } else
-            {
-                Grid.Background = new SolidColorBrush(System.Windows.Media.Colors.Beige);
-            }
+                this.IsEnabled = enabled;
+                if (enabled)
+                {
+                    Overlay.Visibility = Visibility.Hidden;
+                   // Grid.Background = new SolidColorBrush(System.Windows.Media.Colors.Aqua);
+                }
+                else
+                {
+                    Overlay.Visibility = Visibility.Visible;
+                   // Grid.Background = new SolidColorBrush(System.Windows.Media.Colors.Beige);
+                }
+            }));
         }
     }
 }

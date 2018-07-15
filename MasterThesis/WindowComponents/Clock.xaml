@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Name="ClockTime" Text="00:00:00" VerticalAlignment="Center" Foreground="White" Width="100" TextAlignment="Center" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="NoWrap" Name="ClockTime" Text="00:00:00" VerticalAlignment="Center" Foreground="White"  TextAlignment="Center" FontSize="45"/>
 
     </Grid>
 </UserControl>

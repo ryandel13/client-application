@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="eureka_mirror.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="remoteUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ryandel.selfhost.me</Value>
+    </Setting>
+    <Setting Name="remotePort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">8761</Value>
+    </Setting>
+    <Setting Name="localPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">8761</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

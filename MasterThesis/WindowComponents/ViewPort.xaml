@@ -5,8 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MasterThesis.WindowComponents"
              mc:Ignorable="d" 
-             d:DesignHeight="620" d:DesignWidth="1110">
-    <Grid Height="620" Width="1111"  Name="port">
-            
-    </Grid>
+             d:DesignHeight="620" d:DesignWidth="1070">
+    <Grid Width="1080"  Name="port" Margin="0,20,0,0" Height="600" VerticalAlignment="Top"/>
 </UserControl>

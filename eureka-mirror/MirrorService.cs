@@ -26,10 +26,12 @@ namespace eureka_mirror
 
             while (true)
             {
-                
 
-                remote = new Eureka("ryandel.selfhost.me", 8761);
-                local = new Eureka("localhost", 8761);
+                String url = global::eureka_mirror.Properties.Settings.Default.remoteUrl;
+                Int32 remotePort = global::eureka_mirror.Properties.Settings.Default.remotePort;
+                Int32 localPort = global::eureka_mirror.Properties.Settings.Default.localPort;
+                remote = new Eureka(url, remotePort);
+                local = new Eureka("localhost", localPort);
 
                 registry = remote.ReadRegistry();
 
@@ -43,7 +45,7 @@ namespace eureka_mirror
                     if (cesLocal == null)
                     {
                         System.Console.Out.WriteLine("--> Adding " + ces.instanceId + " to local registry");
-                        ces.hostName = "ryandel.selfhost.me";
+                        ces.hostName = url;
                         cesLocal = local.Register(ces.app, ces.port.port, ces.hostName);
                     }
                 }

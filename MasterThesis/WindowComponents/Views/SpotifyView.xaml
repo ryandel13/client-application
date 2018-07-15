@@ -5,17 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterThesis.WindowComponents.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="620" d:DesignWidth="1110">
+      d:DesignHeight="620" d:DesignWidth="1080">
 
     <Grid Height="620">
-        <Image Name="AlbumArt" Height="500" Width="500" Margin="10,10,600,110"/>
 
-        <Label Content="TITEL" x:Name="Title" Foreground="#FFFFAE00" FontSize="48" HorizontalAlignment="Right" Width="585" Height="100" Margin="0,88,10,432" FontWeight="Bold"/>
 
-        <Label Content="AUTHOR" x:Name="Author" Foreground="#FFFFAE00" FontSize="36" HorizontalAlignment="Right" Width="585" Height="100" Margin="0,174,10,346" FontWeight="Bold"/>
+        <Image Name="AlbumArt" Height="620" Margin="0,0,0,0" Canvas.ZIndex="1" Stretch="UniformToFill"/>
+        <Canvas x:Name="Overlay" Height="540" Width="1080" Margin="0,10,10,10" Panel.ZIndex="2" Opacity="0.3">
+            <Canvas.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/overlay.png"/>
+            </Canvas.Background>
+        </Canvas>
 
-        <Label Content="ALBUM" x:Name="Album" Foreground="#FFFFAE00" FontSize="36" HorizontalAlignment="Right" Width="585" Height="100" Margin="0,230,10,290" FontWeight="Bold"/>
+        <Label Content="TITEL" x:Name="Title" Foreground="#FFFFAE00" FontSize="48" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,193,0,-193" Canvas.ZIndex="3"/>
 
-        <ProgressBar Height="50" x:Name="Progress" HorizontalAlignment="Right" Width="1110"  Background="#FF343434" Foreground="#FFA8B006" VerticalAlignment="Center" Margin="0,538,0,32" />
+        <Label Content="AUTHOR" x:Name="Author" Foreground="#FFFFAE00" FontSize="36" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,270,0,-417" Canvas.ZIndex="3"/>
+
+        <Label Content="ALBUM" x:Name="Album" Foreground="#FFFFAE00" FontSize="36" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,333,0,-373" Canvas.ZIndex="3"/>
+
+        
+
+        <ProgressBar Height="50" x:Name="Progress" HorizontalAlignment="Right" Width="1080"  Background="#FF343434" Foreground="#FFA8B006" VerticalAlignment="Center"  Canvas.ZIndex="3" Margin="0,538,0,0" />
     </Grid>
 </UserControl>
