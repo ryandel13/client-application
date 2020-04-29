@@ -38,6 +38,7 @@ namespace MasterThesis.WindowComponents
             //dispatcherTimer.Start();
 
             Thread t = new Thread(UpdateTempThread);
+            t.IsBackground = true;
             t.Start();
         }
 

@@ -1,11 +1,17 @@
-﻿using MasterThesis.Interfaces;
-using SpotifyAPI.Local;
-using SpotifyAPI.Local.Models;
+﻿using MasterThesis.ExchangeObjects;
+using MasterThesis.Interfaces;
+using SpotifyAPI.Web;
+using SpotifyAPI.Web.Auth;
+using SpotifyAPI.Web.Models;
+/*using SpotifyAPI.Local;
+using SpotifyAPI.Local.Models;*/
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Unosquare.Swan.Abstractions;
 
 namespace MasterThesis.Controller
 {
@@ -13,7 +19,19 @@ namespace MasterThesis.Controller
     {
         private static SpotifyController instance;
 
-        private SpotifyLocalAPI _spotify;
+        private static String _clientId = "ae99be430af246f8ba841e6fdbf3c2d3";
+
+        private static String deviceId = "";
+        internal bool isInitialized()
+        {
+            return this.initialized;
+        }
+
+        private SpotifyWebAPI spotifyWebAPI;
+
+        private Boolean initialized = false;
+
+        /*private SpotifyLocalAPI _spotify;*/
         public static SpotifyController GetInstance()
         {
             if(instance == null)
@@ -24,7 +42,53 @@ namespace MasterThesis.Controller
         }
         private SpotifyController()
         {
-            _spotify = new SpotifyLocalAPI(new SpotifyLocalAPIConfig
+            if (tokenIsExpired())
+            {
+                ImplicitGrantAuth auth = new ImplicitGrantAuth(_clientId, "http://localhost:8888", "http://localhost:8888", SpotifyAPI.Web.Enums.Scope.AppRemoteControl);
+
+                auth.AuthReceived += async (sender, payload) =>
+                {
+                    auth.Stop(); // `sender` is also the auth instance
+                    spotifyWebAPI = new SpotifyWebAPI()
+                    {
+                        TokenType = payload.TokenType,
+                        AccessToken = payload.AccessToken
+
+
+                    };
+                    global::MasterThesis.Properties.Settings.Default.spotify_token = payload.AccessToken;
+                    global::MasterThesis.Properties.Settings.Default.spotify_type = payload.TokenType;
+
+                    DateTime dt = DateTime.Now.AddSeconds(payload.ExpiresIn);
+
+                    global::MasterThesis.Properties.Settings.Default.spotify_tokenDate = dt.Ticks;
+
+                    global::MasterThesis.Properties.Settings.Default.Save();
+
+                    initialized = true;
+                    if (global::MasterThesis.Properties.Settings.Default.spotify_deviceId != "")
+                    {
+                        spotifyWebAPI.TransferPlayback(global::MasterThesis.Properties.Settings.Default.spotify_deviceId, true);
+                    }
+                    // Do requests with API client
+                };
+                auth.Start(); // Starts an internal HTTP Server
+                auth.OpenBrowser();
+            } else
+            {
+                spotifyWebAPI = new SpotifyWebAPI()
+                {
+                    TokenType = global::MasterThesis.Properties.Settings.Default.spotify_type,
+                    AccessToken = global::MasterThesis.Properties.Settings.Default.spotify_token
+                };
+                initialized = true;
+                if (global::MasterThesis.Properties.Settings.Default.spotify_deviceId != "")
+                {
+                    spotifyWebAPI.TransferPlayback(global::MasterThesis.Properties.Settings.Default.spotify_deviceId, true);
+                }
+            }
+          
+            /*_spotify = new SpotifyLocalAPI(new SpotifyLocalAPIConfig
             {
                 Port = 4381,
                 HostUrl = "http://127.0.0.1"
@@ -36,44 +100,70 @@ namespace MasterThesis.Controller
 
             if (!_spotify.Connect())
                 return; //We need to call Connect before fetching infos, this will handle Auth stuff
+                */
         }
 
-        public Track GetTrack()
+        public static void SetDevice(string deviceId)
         {
-            return _spotify.GetStatus().Track;
+            global::MasterThesis.Properties.Settings.Default.spotify_deviceId = deviceId;
+            global::MasterThesis.Properties.Settings.Default.Save();
         }
 
+        public PlaybackContext GetTrack()
+        {
+            return spotifyWebAPI.GetPlayingTrack();
+        }
+       
         public double GetPosition()
         {
-            return _spotify.GetStatus().PlayingPosition;
+            return (spotifyWebAPI.GetPlayingTrack().Item.DurationMs / spotifyWebAPI.GetPlayingTrack().ProgressMs) * 100;
         }
 
         public void PlayPauseResume()
         {
-            if (_spotify.GetStatus().Playing)
+            if (spotifyWebAPI.GetPlayingTrack().IsPlaying)
             {
-                _spotify.Pause();
-            }
-            else
+                spotifyWebAPI.PausePlayback();
+            } else
             {
-                _spotify.Play();
+                //spotifyWebAPI.ResumePlayback(global::MasterThesis.Properties.Settings.Default.spotify_deviceId);
+                spotifyWebAPI.TransferPlayback(global::MasterThesis.Properties.Settings.Default.spotify_deviceId, true);
             }
             
         }
 
         public void Stop()
         {
-            _spotify.Pause();
         }
 
         public void Forward()
         {
-            _spotify.Skip();
+            spotifyWebAPI.SkipPlaybackToNext();
         }
 
         public void Rewind()
         {
-            _spotify.Previous();
+            spotifyWebAPI.SkipPlaybackToPrevious();
+        }
+
+        public Boolean tokenIsExpired()
+        {
+            DateTime dt = new DateTime(global::MasterThesis.Properties.Settings.Default.spotify_tokenDate);
+            if (DateTime.Now > dt)
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public List<SpotifyDevice> GetDevices()
+        {
+            List<SpotifyDevice> devices = new List<SpotifyDevice>();
+            foreach(Device d in spotifyWebAPI.GetDevices().Devices) {
+                SpotifyDevice sd = new SpotifyDevice(d.Name, d.Id);
+                devices.Add(sd);
+            }
+            return devices;
         }
     }
 }

@@ -2,6 +2,8 @@
 using eureka_sharpener.elements;
 using MasterThesis.Controller;
 using MasterThesis.ExchangeObjects;
+using MasterThesis.RESTInterface;
+using MasterThesis.SPOTIFYInterface;
 using MasterThesis.WindowComponents.Views;
 using System;
 using System.Collections.Generic;
@@ -39,7 +41,7 @@ namespace MasterThesis
 
             RESTInterface.RESTInterface restService = new RESTInterface.RESTImplementation();
             WebServiceHost __serviceHost = new WebServiceHost(restService, new Uri("http://localhost:8000/ui/"));
-            __serviceHost.Open();
+            //__serviceHost.Open();
 
             eureka = new Eureka("localhost", 8761);
             eurekaInstance = eureka.Register("ui-service-app", 8000);
@@ -51,6 +53,9 @@ namespace MasterThesis
             //ImageBrush backgroundBrush = new ImageBrush(BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3));
 
             //MainPanel.Background = backgroundBrush;
+            SPOTIFYInterface.SPOTIFYInterface spotifyInterface = new SpotifyAuthImpl();
+            WebServiceHost __spotifyAuth = new WebServiceHost(spotifyInterface, new Uri("http://localhost/"));
+            __spotifyAuth.Open();
         }
 
         internal void SetBackgroundImage(ImageSource image)

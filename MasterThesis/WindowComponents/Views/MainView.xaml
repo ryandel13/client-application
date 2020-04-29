@@ -11,6 +11,7 @@
         <Button Content="Config" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top" Width="150" FontSize="20"/>
         <Button Content="Exit" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Width="150" FontSize="20" Click="Button_Click_1"/>
         <ComboBox Name="BackgroundSelect" HorizontalAlignment="Left" Margin="494,10,0,0" VerticalAlignment="Top" Width="326" Height="31" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox Name="DeviceSelect" HorizontalAlignment="Left" Margin="494,57,0,0" VerticalAlignment="Top" Width="326" Height="31" SelectionChanged="DeviceSelect_SelectionChanged"/>
 
 
     </Grid>

@@ -15,7 +15,7 @@ namespace MasterThesis.Controller
         public IEnumerable<RasEntry> GetAvailableEntries()
         {
             RasPhoneBook phoneBook = new RasPhoneBook();
-            phoneBook = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.AllUsers));
+            //phoneBook = RasPhoneBook.Open(RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.AllUsers));
             return phoneBook.Entries;
         }
 

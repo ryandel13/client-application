@@ -20,8 +20,8 @@ namespace MasterThesis.Controller
 
             if (!fullscreen)
             {
-                GetMainWindow().WindowState = System.Windows.WindowState.Maximized;
                 GetMainWindow().WindowStyle = System.Windows.WindowStyle.None;
+                GetMainWindow().WindowState = System.Windows.WindowState.Maximized;
                 global::MasterThesis.Properties.Settings.Default.fullscreen = true;
             }
             else

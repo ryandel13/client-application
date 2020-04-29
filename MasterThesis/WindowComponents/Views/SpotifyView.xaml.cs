@@ -52,6 +52,7 @@ namespace MasterThesis.WindowComponents.Views
             //dispatcherTimer.Start();
 
             Thread th = new Thread(SpotifyUpdateThread.Start);
+            th.IsBackground = true;
             th.Start();
 
             Title.Content = "";
@@ -74,8 +75,10 @@ namespace MasterThesis.WindowComponents.Views
                     currentTitle = title; Title.Content.ToString();
                     Author.Content = author;
                     Album.Content = album;
-                    AlbumArt.Source = BitmapHelper.getBitmapSourceFromBitmap(albumArt);
-                      
+                        if (albumArt != null)
+                        {
+                            AlbumArt.Source = BitmapHelper.getBitmapSourceFromBitmap(albumArt);
+                        }
                 }
                 
                     Progress.Value = Convert.ToInt32(status);

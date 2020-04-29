@@ -23,7 +23,7 @@
     <Setting Name="mssPort" Type="System.String" Scope="Application">
       <Value Profile="(Default)">8806</Value>
     </Setting>
-    <Setting Name="fullscreen" Type="System.Boolean" Scope="Application">
+    <Setting Name="fullscreen" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="comPortActor" Type="System.String" Scope="Application">
@@ -37,6 +37,18 @@
     </Setting>
     <Setting Name="NAVApplication_Params" Type="System.String" Scope="Application">
       <Value Profile="(Default)">--atlas='C:/ProgramData/Navigator/14.1/atlas_pcn_free.idc'</Value>
+    </Setting>
+    <Setting Name="spotify_token" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="spotify_type" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="spotify_tokenDate" Type="System.Int64" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="spotify_deviceId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

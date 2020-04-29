@@ -44,6 +44,19 @@ namespace MasterThesis.WindowComponents.Views
             BackgroundSelect.Items.Add(imgSrc1);
             BackgroundSelect.Items.Add(imgSrc2);
             BackgroundSelect.Items.Add(imgSrc3);
+
+            LoadSpotifyDevices();
+        }
+
+        private void LoadSpotifyDevices()
+        {
+            SpotifyController spotifyController = SpotifyController.GetInstance();
+            List<SpotifyDevice> devices = spotifyController.GetDevices();
+
+            foreach(SpotifyDevice sd in devices)
+            {
+                DeviceSelect.Items.Add(sd);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,7 +72,14 @@ namespace MasterThesis.WindowComponents.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+            Environment.Exit(0); //Bisschen Brutal, tut aber
+        }
+
+        private void DeviceSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            SpotifyController.SetDevice(((SpotifyDevice)cb.SelectedItem).DeviceId);
         }
     }
 }

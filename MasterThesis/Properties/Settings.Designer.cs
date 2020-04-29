@@ -12,7 +12,7 @@ namespace MasterThesis.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -86,12 +86,15 @@ namespace MasterThesis.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool fullscreen {
             get {
                 return ((bool)(this["fullscreen"]));
+            }
+            set {
+                this["fullscreen"] = value;
             }
         }
         
@@ -128,6 +131,54 @@ namespace MasterThesis.Properties {
         public string NAVApplication_Params {
             get {
                 return ((string)(this["NAVApplication_Params"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string spotify_token {
+            get {
+                return ((string)(this["spotify_token"]));
+            }
+            set {
+                this["spotify_token"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string spotify_type {
+            get {
+                return ((string)(this["spotify_type"]));
+            }
+            set {
+                this["spotify_type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public long spotify_tokenDate {
+            get {
+                return ((long)(this["spotify_tokenDate"]));
+            }
+            set {
+                this["spotify_tokenDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string spotify_deviceId {
+            get {
+                return ((string)(this["spotify_deviceId"]));
+            }
+            set {
+                this["spotify_deviceId"] = value;
             }
         }
     }
