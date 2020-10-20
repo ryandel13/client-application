@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="50" Width="800">
     <Grid Width="1024" Height="50" HorizontalAlignment="Center">
-        <local:FooterMenuItem x:Name="VolUpBtn" BackGroundImage="volume_up"  ItemTitle="+" Margin="0,0,640,0"></local:FooterMenuItem>
-        <local:FooterMenuItem x:Name="VolDownBtn" BackGroundImage="volume_down" ItemTitle="-" Margin="160,0,480,0"></local:FooterMenuItem>
+        <local:FooterMenuItem x:Name="VolUpBtn" BackGroundImage="volume_up"  ItemTitle="+" Margin="0,0,640,0" MouseUp="VolupBtn_MouseUp"></local:FooterMenuItem>
+        <local:FooterMenuItem x:Name="VolDownBtn" BackGroundImage="volume_down" ItemTitle="-" Margin="160,0,480,0" MouseUp="VoldownBtn_MouseUp"></local:FooterMenuItem>
         <local:FooterMenuItem x:Name="MuteBtn" BackGroundImage="volume_mute" ItemTitle="Mute" Margin="320,0" MouseUp="MuteBtn_MouseUp"></local:FooterMenuItem>
         <local:FooterMenuItem x:Name="PlayBtn" BackGroundImage="media_play_pause_resume" ItemTitle="Play" Margin="480,0,160,0" MouseUp="PlayBtn_MouseUp"></local:FooterMenuItem>
         <local:FooterMenuItem x:Name="NextBtn" BackGroundImage="media_next" ItemTitle="Next" Margin="640,0,0,0" MouseUp="NextBtn_MouseUp"></local:FooterMenuItem>

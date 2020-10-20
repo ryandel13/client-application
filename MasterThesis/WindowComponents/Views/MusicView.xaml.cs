@@ -49,11 +49,14 @@ namespace MasterThesis.WindowComponents.Views
 
         public static void ReadMusicList()
         {
-            Eureka registry = new Eureka("localhost", 8761);
-            if (registry != null)
+            if (!MasterThesis.Properties.Settings.Default.OFFLINE)
             {
-               Instance mssInstance = registry.ReadRegistry().FindInstance("music-streaming-service");
-               retrieveMusicList(mssInstance);
+                Eureka registry = new Eureka("localhost", 8761);
+                if (registry != null)
+                {
+                    Instance mssInstance = registry.ReadRegistry().FindInstance("music-streaming-service");
+                    retrieveMusicList(mssInstance);
+                }
             }
         }
 

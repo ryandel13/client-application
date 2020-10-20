@@ -31,6 +31,7 @@ namespace MasterThesis.WindowComponents
 
             Indicator.Text = "";
             Thread t = new Thread(UpdateThread);
+            t.IsBackground = true;
             t.Start();
         }
     

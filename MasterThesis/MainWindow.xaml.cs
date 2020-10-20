@@ -34,6 +34,8 @@ namespace MasterThesis
 
         private Instance eurekaInstance;
 
+        private WebServiceHost __spotifyAuth;
+
         private UserControl activeControl = null;
         public MainWindow()
         {
@@ -42,9 +44,12 @@ namespace MasterThesis
             RESTInterface.RESTInterface restService = new RESTInterface.RESTImplementation();
             WebServiceHost __serviceHost = new WebServiceHost(restService, new Uri("http://localhost:8000/ui/"));
             //__serviceHost.Open();
-
-            eureka = new Eureka("localhost", 8761);
-            eurekaInstance = eureka.Register("ui-service-app", 8000);
+          
+                eureka = new Eureka("localhost", 8761);
+            if (!MasterThesis.Properties.Settings.Default.OFFLINE)
+            {
+                eurekaInstance = eureka.Register("ui-service-app", 8000);
+            }
 
             Application.Current.Exit += new ExitEventHandler(this.OnApplicationExit);
 
@@ -54,7 +59,7 @@ namespace MasterThesis
 
             //MainPanel.Background = backgroundBrush;
             SPOTIFYInterface.SPOTIFYInterface spotifyInterface = new SpotifyAuthImpl();
-            WebServiceHost __spotifyAuth = new WebServiceHost(spotifyInterface, new Uri("http://localhost/"));
+            __spotifyAuth = new WebServiceHost(spotifyInterface, new Uri("http://localhost/"));
             __spotifyAuth.Open();
         }
 
@@ -93,6 +98,7 @@ namespace MasterThesis
 
         private void OnApplicationExit(object sender, EventArgs e)
         {
+            __spotifyAuth.Close();
             eureka.Unregister(this.eurekaInstance);
         }
     }

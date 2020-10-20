@@ -29,6 +29,7 @@ namespace MasterThesis.Controller
                     {
                         if (title != null && !title.Equals(currentTitle))
                         {
+                                currentTitle = title;
                                 String author = controller.GetTrack().Item.Artists[0].Name;
                                 String album = controller.GetTrack().Item.Album.Name;
                                 if (!File.Exists(@"c:\temp\spotify\" + album + ".png"))
@@ -56,9 +57,14 @@ namespace MasterThesis.Controller
 
         private static void DownloadImage(String url, String albumName)
         {
+            System.Console.WriteLine(url);
             using (WebClient client = new WebClient())
             {
                 //Bitte blockierend!
+                if (!Directory.Exists("c:/temp/spotify/"))
+                {
+                    Directory.CreateDirectory("c:/temp/spotify/");
+                }
                 client.DownloadFile(new Uri(url), @"c:\temp\spotify\" + albumName + ".png");
             }
         }

@@ -12,7 +12,7 @@ namespace MasterThesis.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -118,7 +118,7 @@ namespace MasterThesis.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:/Program Files (x86)/Navigator14/PC_Navigator/PC_Navigator.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files (x86)\\Navigator20\\PC_Navigator\\PC_Navigator.exe")]
         public string NAVApplication {
             get {
                 return ((string)(this["NAVApplication"]));
@@ -127,7 +127,7 @@ namespace MasterThesis.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("--atlas=\'C:/ProgramData/Navigator/14.1/atlas_pcn_free.idc\'")]
+        [global::System.Configuration.DefaultSettingValueAttribute("--atlas=\'C:\\ProgramData\\Navigator\\20.0\\atlas_pcn_free.idc\'")]
         public string NAVApplication_Params {
             get {
                 return ((string)(this["NAVApplication_Params"]));
@@ -179,6 +179,30 @@ namespace MasterThesis.Properties {
             }
             set {
                 this["spotify_deviceId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OFFLINE {
+            get {
+                return ((bool)(this["OFFLINE"]));
+            }
+            set {
+                this["OFFLINE"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int backgroundImage {
+            get {
+                return ((int)(this["backgroundImage"]));
+            }
+            set {
+                this["backgroundImage"] = value;
             }
         }
     }

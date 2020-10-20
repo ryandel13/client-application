@@ -124,6 +124,7 @@
     <Compile Include="Controller\SpotifyUpdateThread.cs" />
     <Compile Include="Controller\Static.cs" />
     <Compile Include="Controller\VolumeController.cs" />
+    <Compile Include="ExchangeObjects\BackgroundImage.cs" />
     <Compile Include="ExchangeObjects\BitmapHelper.cs" />
     <Compile Include="ExchangeObjects\CheckBoxClass.cs" />
     <Compile Include="ExchangeObjects\DataPoint.cs" />

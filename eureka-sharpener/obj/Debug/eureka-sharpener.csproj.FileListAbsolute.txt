@@ -16,8 +16,8 @@ D:\masters\client-application\eureka-sharpener\bin\Debug\eureka-sharpener.dll
 D:\masters\client-application\eureka-sharpener\bin\Debug\eureka-sharpener.pdb
 D:\masters\client-application\eureka-sharpener\bin\Debug\Newtonsoft.Json.dll
 D:\masters\client-application\eureka-sharpener\bin\Debug\Newtonsoft.Json.xml
-D:\masters\client-application\eureka-sharpener\obj\Debug\eureka-sharpener.csprojAssemblyReference.cache
 D:\masters\client-application\eureka-sharpener\obj\Debug\eureka-sharpener.csproj.CoreCompileInputs.cache
 D:\masters\client-application\eureka-sharpener\obj\Debug\eureka-sharpener.csproj.CopyComplete
 D:\masters\client-application\eureka-sharpener\obj\Debug\eureka-sharpener.dll
 D:\masters\client-application\eureka-sharpener\obj\Debug\eureka-sharpener.pdb
+D:\masters\client-application\eureka-sharpener\obj\Debug\eureka-sharpener.csprojAssemblyReference.cache

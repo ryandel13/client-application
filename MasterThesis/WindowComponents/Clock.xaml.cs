@@ -27,6 +27,7 @@ namespace MasterThesis.WindowComponents
             InitializeComponent();
 
             Thread t = new Thread(UpdateClockThread);
+            t.IsBackground = true;
             t.Start();
         }
 

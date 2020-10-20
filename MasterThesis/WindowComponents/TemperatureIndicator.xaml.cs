@@ -36,10 +36,12 @@ namespace MasterThesis.WindowComponents
             //dispatcherTimer.Tick += new EventHandler(UpdateTemperature);
             //dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             //dispatcherTimer.Start();
-
-            Thread t = new Thread(UpdateTempThread);
-            t.IsBackground = true;
-            t.Start();
+            if (!MasterThesis.Properties.Settings.Default.OFFLINE)
+            {
+                Thread t = new Thread(UpdateTempThread);
+                t.IsBackground = true;
+                t.Start();
+            }
         }
 
         private void UpdateTemperature()

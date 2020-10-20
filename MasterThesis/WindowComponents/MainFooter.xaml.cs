@@ -40,5 +40,15 @@ namespace MasterThesis.WindowComponents
         {
             VolumeController.Mute();
         }
+
+        private void VolupBtn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            VolumeController.VolumeUp();
+        }
+
+        private void VoldownBtn_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            VolumeController.VolumeDown();
+        }
     }
 }

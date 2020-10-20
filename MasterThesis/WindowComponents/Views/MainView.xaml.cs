@@ -37,13 +37,18 @@ namespace MasterThesis.WindowComponents.Views
         {
             InitializeComponent();
 
-            ImageSource imgSrc3 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3);
-            ImageSource imgSrc2 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_2);
-            ImageSource imgSrc1 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background);
+            BackgroundImage img1 = new BackgroundImage("abc", BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background));
+            BackgroundImage img2 = new BackgroundImage("def", BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_2));
+            BackgroundImage img3 = new BackgroundImage("ghi", BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3));
+            //ImageSource imgSrc3 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_3);
+            //ImageSource imgSrc2 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background_2);
+            //ImageSource imgSrc1 = BitmapHelper.getBitmapSourceFromBitmap(global::MasterThesis.Properties.Resources.background);
 
-            BackgroundSelect.Items.Add(imgSrc1);
-            BackgroundSelect.Items.Add(imgSrc2);
-            BackgroundSelect.Items.Add(imgSrc3);
+            BackgroundSelect.Items.Add(img1);
+            BackgroundSelect.Items.Add(img2);
+            BackgroundSelect.Items.Add(img3);
+       
+            BackgroundSelect.SelectedIndex = MasterThesis.Properties.Settings.Default.backgroundImage;
 
             LoadSpotifyDevices();
         }
@@ -53,9 +58,15 @@ namespace MasterThesis.WindowComponents.Views
             SpotifyController spotifyController = SpotifyController.GetInstance();
             List<SpotifyDevice> devices = spotifyController.GetDevices();
 
+            String selDev = SpotifyController.GetDevice();
+
             foreach(SpotifyDevice sd in devices)
             {
                 DeviceSelect.Items.Add(sd);
+                if (sd.DeviceId.Equals(selDev))
+                {
+                    DeviceSelect.SelectedItem = sd;
+                }
             }
         }
 
@@ -67,7 +78,9 @@ namespace MasterThesis.WindowComponents.Views
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cb = (ComboBox)sender;
-            MainViewController.SetBackground((ImageSource)cb.SelectedValue);
+            MainViewController.SetBackground(((BackgroundImage)cb.SelectedValue).Image);
+            MasterThesis.Properties.Settings.Default.backgroundImage = cb.SelectedIndex;
+            MasterThesis.Properties.Settings.Default.Save();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

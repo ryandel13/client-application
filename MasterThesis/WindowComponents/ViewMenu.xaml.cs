@@ -35,9 +35,12 @@ namespace MasterThesis.WindowComponents
            // menuItems.Add("poi-service", NaviBtn);
             menuItems.Add("music-streaming-service", MusicBtn);
             menuItems.Add("variable-data-service", SensorBtn);
-
-            Thread t = new Thread(() => MenuUpdateThread.Start(this, menuItems));
-            t.Start();
+            if (!MasterThesis.Properties.Settings.Default.OFFLINE)
+            {
+                Thread t = new Thread(() => MenuUpdateThread.Start(this, menuItems));
+                t.IsBackground = true;
+                t.Start();
+            }
         }
 
         public void UpdateService(String serviceName, Boolean state)

@@ -74,6 +74,7 @@ namespace MasterThesis.Controller
                 };
                 auth.Start(); // Starts an internal HTTP Server
                 auth.OpenBrowser();
+              
             } else
             {
                 spotifyWebAPI = new SpotifyWebAPI()
@@ -107,6 +108,11 @@ namespace MasterThesis.Controller
         {
             global::MasterThesis.Properties.Settings.Default.spotify_deviceId = deviceId;
             global::MasterThesis.Properties.Settings.Default.Save();
+        }
+
+        public static String GetDevice()
+        {
+            return global::MasterThesis.Properties.Settings.Default.spotify_deviceId;
         }
 
         public PlaybackContext GetTrack()
@@ -159,9 +165,13 @@ namespace MasterThesis.Controller
         public List<SpotifyDevice> GetDevices()
         {
             List<SpotifyDevice> devices = new List<SpotifyDevice>();
-            foreach(Device d in spotifyWebAPI.GetDevices().Devices) {
-                SpotifyDevice sd = new SpotifyDevice(d.Name, d.Id);
-                devices.Add(sd);
+            if (initialized)
+            {
+                foreach (Device d in spotifyWebAPI.GetDevices().Devices)
+                {
+                    SpotifyDevice sd = new SpotifyDevice(d.Name, d.Id);
+                    devices.Add(sd);
+                }
             }
             return devices;
         }
